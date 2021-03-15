@@ -1,5 +1,21 @@
+:root {
+  --main-color: #006550;
+  --secondary-color: #007b61;
+  --bg-color: #fff;
+  --secondary-bg-color: #bbb;
+  --main-text-color: #fff;
+  --secondary-text-color: #006550;
+  --button-bg-color: #ffbd4b;
+  --button-text-color: #000;
+  --menu-button-color: #fff;
+  --menu-active-color: #ffbd4b;
+  --input-bg-color: #dedede;
+  --input-text-color: #006550;
+}
+
 html,
 body {
+  background-color: var(--bg-color);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
