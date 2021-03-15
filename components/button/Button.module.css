@@ -2,8 +2,18 @@
   background-color: var(--button-bg-color);
   border: none;
   border-radius: 41pt;
+  box-shadow: 2pt 2pt 3pt black;
   font-size: 2em;
   padding: 15px;
   font-weight: 200;
   font-style: italic;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+.icon {
+  display: grid;
+  align-items: center;
+  padding: 0 0 0 10px;
 }

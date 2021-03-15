@@ -9,7 +9,7 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const Main = Template.bind({});
-Main.args = {
+export const MainButton = Template.bind({});
+MainButton.args = {
   label: "HERE WE GO",
 };

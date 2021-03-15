@@ -9,7 +9,9 @@ function Button({ label }: ButtonProps) {
   return (
     <button className={styles.btn}>
       {label}
-      <ArrowRightIcon />
+      <span className={styles.icon}>
+        <ArrowRightIcon />
+      </span>
     </button>
   );
 }
