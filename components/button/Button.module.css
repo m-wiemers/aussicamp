@@ -1,10 +1,11 @@
 .btn {
+  min-width: 280px;
   background-color: var(--button-bg-color);
   border: none;
   border-radius: 41pt;
   box-shadow: 2pt 2pt 3pt black;
-  font-family: var(--main-font);
-  font-weight: 500;
+  font-family: var(--button-font);
+  font-weight: 400;
   font-size: 2em;
   font-style: italic;
   padding: 15px;
