@@ -1,4 +1,4 @@
-import LoupeIcon from "../icons/LoupeIcon";
+import SearchIcon from "../icons/SearchIcon";
 import styles from "./SearchInput.module.css";
 
 function SearchInput() {
@@ -6,7 +6,7 @@ function SearchInput() {
     <div className={styles.container}>
       <input className={styles.input} type="text" placeholder="Search" />
       <button className={styles.loupe}>
-        <LoupeIcon />
+        <SearchIcon />
       </button>
     </div>
   );
