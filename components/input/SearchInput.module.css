@@ -1,7 +1,6 @@
 .container {
-  max-width: 400px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 85% 15%;
 }
 
 .input {
@@ -15,7 +14,6 @@
 }
 
 .loupe {
-  width: 70%;
   background-color: var(--input-bg-color);
   fill: var(--secondary-bg-color);
   border: none;
