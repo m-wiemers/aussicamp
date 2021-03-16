@@ -12,6 +12,7 @@
   grid-area: logo;
   fill: var(--main-text-color);
   justify-self: end;
+  margin-bottom: 4px;
 }
 
 .logotext {
@@ -27,6 +28,7 @@
   grid-area: subtitle;
   margin: 0.5em;
   color: var(--main-text-color);
-  font-family: "Montserrat 200", sans-serif;
+  font-family: var(--main-font);
+  font-weight: 300;
   letter-spacing: 0.1em;
 }

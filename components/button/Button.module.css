@@ -3,10 +3,11 @@
   border: none;
   border-radius: 41pt;
   box-shadow: 2pt 2pt 3pt black;
+  font-family: var(--main-font);
+  font-weight: 500;
   font-size: 2em;
-  padding: 15px;
-  font-weight: 200;
   font-style: italic;
+  padding: 15px;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
