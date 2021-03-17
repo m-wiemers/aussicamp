@@ -1,14 +1,13 @@
-import { ChangeEventHandler, MouseEventHandler } from "react";
+import { ChangeEventHandler } from "react";
 import SearchIcon from "../icons/SearchIcon";
 import styles from "./SearchInput.module.css";
 
 export type SearchInputProps = {
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  onButtonClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-function SearchInput({ value, onChange, onButtonClick }: SearchInputProps) {
+function SearchInput({ value, onChange }: SearchInputProps) {
   return (
     <div className={styles.container}>
       <input
@@ -18,9 +17,9 @@ function SearchInput({ value, onChange, onButtonClick }: SearchInputProps) {
         value={value}
         onChange={onChange}
       />
-      <button className={styles.loupe} onClick={onButtonClick}>
+      <span className={styles.loupe}>
         <SearchIcon />
-      </button>
+      </span>
     </div>
   );
 }
