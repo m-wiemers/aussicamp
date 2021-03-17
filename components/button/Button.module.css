@@ -3,7 +3,7 @@
   background-color: var(--button-bg-color);
   border: none;
   border-radius: 41pt;
-  box-shadow: 2pt 2pt 3pt black;
+  box-shadow: 2px 2px 3px black;
   font-family: var(--button-font);
   font-weight: 400;
   font-size: 2em;
