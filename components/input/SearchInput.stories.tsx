@@ -1,13 +1,20 @@
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import SearchInput from "./SearchInput";
+import SearchInput, { SearchInputProps } from "./SearchInput";
 
 export default {
-  title: "Common/Input",
+  title: "Common/SearchInput",
   component: SearchInput,
 };
 
-const Template: Story = () => <SearchInput />;
+const Template: Story<SearchInputProps> = (args) => <SearchInput {...args} />;
 
-export const Search = Template.bind({});
-Search.args = {};
+export const empty = Template.bind({});
+empty.args = {
+  value: "",
+};
+
+export const filled = Template.bind({});
+filled.args = {
+  value: "Brisbane",
+};

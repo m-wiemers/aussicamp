@@ -1,6 +1,7 @@
 .container {
   display: grid;
-  grid-template-columns: 85% 15%;
+  grid-template-columns: 85% 2.5em;
+  max-width: 25em;
 }
 
 .input {
