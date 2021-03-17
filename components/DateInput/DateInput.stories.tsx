@@ -9,7 +9,12 @@ export default {
 
 const Template: Story<DateProps> = (args) => <DateInput {...args} />;
 
-export const Date = Template.bind({});
-Date.args = {
+export const StartDate = Template.bind({});
+StartDate.args = {
   label: "When does it start?",
+};
+
+export const EndDate = Template.bind({});
+EndDate.args = {
+  label: "When does it end?",
 };
