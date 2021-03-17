@@ -1,22 +1,14 @@
 .container {
   background-color: var(--main-color);
   text-align: center;
-  display: grid;
-  grid-template: auto auto / auto auto;
-  grid-template-areas:
-    "logo text"
-    "subtitle subtitle";
 }
 
 .logo {
-  grid-area: logo;
   fill: var(--main-text-color);
   justify-self: end;
-  margin-bottom: 4px;
 }
 
-.logotext {
-  grid-area: text;
+.logoText {
   color: var(--main-text-color);
   font-size: 2.2em;
   margin: 0;
@@ -25,7 +17,6 @@
 }
 
 .subtitle {
-  grid-area: subtitle;
   margin: 0.5em;
   color: var(--main-text-color);
   font-family: var(--main-font);

@@ -11,10 +11,10 @@ const Template: Story<LogoProps> = (args) => <Logo {...args} />;
 
 export const Main = Template.bind({});
 Main.args = {
-  subTitle: true,
+  subtitle: true,
 };
 
 export const Small = Template.bind({});
 Small.args = {
-  subTitle: false,
+  subtitle: false,
 };

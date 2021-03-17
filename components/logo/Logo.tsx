@@ -1,18 +1,18 @@
-import AussiTentIcon from "../icons/AussiLogoTent";
+import AussiTentIcon from "../icons/AussiTentIcon";
 import styles from "./Logo.module.css";
 
 export type LogoProps = {
-  subTitle: boolean;
+  subtitle: boolean;
 };
 
-function Logo({ subTitle }: LogoProps) {
+function Logo({ subtitle }: LogoProps) {
   return (
     <div className={styles.container}>
-      <span className={styles.logo}>
-        <AussiTentIcon />
-      </span>
-      <p className={styles.logotext}>ussiCamp</p>
-      {subTitle && <p className={styles.subtitle}>plan your next adventure</p>}
+      <div className={styles.logoText}>
+        <AussiTentIcon className={styles.logo} />
+        ussiCamp
+      </div>
+      {subtitle && <p className={styles.subtitle}>plan your next adventure</p>}
     </div>
   );
 }
