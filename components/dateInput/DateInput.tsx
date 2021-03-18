@@ -10,7 +10,7 @@ export type DateProps = {
 function DateInput({ label, onDateSelect, value }: DateProps) {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>
+      <label className="label">
         {label}
         <input
           className={styles.date}

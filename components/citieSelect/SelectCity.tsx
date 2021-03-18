@@ -10,22 +10,24 @@ export type SelectProps = {
 function SelectCity({ label, value, onSelect }: SelectProps) {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>{label}</label>
-      <select
-        className={styles.cityselect}
-        name="StartCity"
-        onChange={onSelect}
-      >
-        <option className={styles.option} value={value}>
-          {value[0]}
-        </option>
-        <option className={styles.option} value={value}>
-          {value[1]}
-        </option>
-        <option className={styles.option} value={value}>
-          {value[2]}
-        </option>
-      </select>
+      <label className="label">
+        {label}
+        <select
+          className={styles.cityselect}
+          name="StartCity"
+          onChange={onSelect}
+        >
+          <option className={styles.option} value={value}>
+            {value[0]}
+          </option>
+          <option className={styles.option} value={value}>
+            {value[1]}
+          </option>
+          <option className={styles.option} value={value}>
+            {value[2]}
+          </option>
+        </select>
+      </label>
     </div>
   );
 }

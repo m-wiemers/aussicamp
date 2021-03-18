@@ -39,3 +39,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.label {
+  display: grid;
+  row-gap: 1em;
+  color: var(--secondary-text-color);
+  font-family: var(--main-font);
+  font-weight: 700;
+}
