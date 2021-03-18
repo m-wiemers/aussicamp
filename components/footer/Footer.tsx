@@ -5,7 +5,7 @@ import CalenderIcon from "../icons/CalenderIcon";
 import SettingIcon from "../icons/SettingIcon";
 
 export type FooterProps = {
-  isActive: string;
+  isActive: "list" | "calender" | "map" | "settings";
 };
 
 function Footer({ isActive }: FooterProps) {
