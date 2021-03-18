@@ -12,11 +12,11 @@ const Template: Story<SelectProps> = (args) => <SelectCity {...args} />;
 export const StartCity = Template.bind({});
 StartCity.args = {
   label: "Where does it start?",
-  value: ["Brisbane", "Sydney", "Cairns"],
+  value: ["Brisbane", "Sydney", "Cairns", "Byron"],
 };
 
 export const EndCity = Template.bind({});
 EndCity.args = {
   label: "Where does it end?",
-  value: ["Brisbane", "Sydney", "Cairns"],
+  value: ["Brisbane", "Sydney", "Cairns", "Byron"],
 };

@@ -3,11 +3,12 @@ import styles from "./SelectCity.module.css";
 
 export type SelectProps = {
   label: string;
-  value: string;
+  value: string[];
   onSelect: ChangeEventHandler<HTMLSelectElement>;
 };
 
 function SelectCity({ label, value, onSelect }: SelectProps) {
+  const cities = value.map((city) => <option key={city}>{city}</option>);
   return (
     <div className={styles.container}>
       <label className="label">
@@ -17,15 +18,7 @@ function SelectCity({ label, value, onSelect }: SelectProps) {
           name="StartCity"
           onChange={onSelect}
         >
-          <option className={styles.option} value={value}>
-            {value[0]}
-          </option>
-          <option className={styles.option} value={value}>
-            {value[1]}
-          </option>
-          <option className={styles.option} value={value}>
-            {value[2]}
-          </option>
+          {cities}
         </select>
       </label>
     </div>
