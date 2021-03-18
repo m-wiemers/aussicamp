@@ -1,14 +1,19 @@
+import { MouseEventHandler } from "react";
+import ArrowRightIcon from "../icons/ArrowRightIcon";
 import styles from "./Button.module.css";
 
 export type ButtonProps = {
-  primary: boolean;
   label: string;
+  onButtonClick: MouseEventHandler<HTMLButtonElement>;
 };
 
-function Button({ primary, label, ...props }: ButtonProps) {
+function Button({ label, onButtonClick }: ButtonProps) {
   return (
-    <button className={`${styles.btn} ${primary ? "primary" : ""}`} {...props}>
+    <button className={styles.btn} onClick={onButtonClick}>
       {label}
+      <span className={styles.icon}>
+        <ArrowRightIcon />
+      </span>
     </button>
   );
 }

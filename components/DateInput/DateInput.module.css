@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+}
+
+.date {
+  color: var(--secondary-text-color);
+  font-family: var(--button-font);
+  font-size: 1.2em;
+  border: none;
+  background-color: var(--input-bg-color);
+  padding: 1em;
+  border-radius: 20px;
+}

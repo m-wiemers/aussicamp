@@ -1,0 +1,25 @@
+.container {
+  background-color: var(--main-color);
+  text-align: center;
+}
+
+.logo {
+  fill: var(--main-text-color);
+  justify-self: end;
+}
+
+.logoText {
+  color: var(--main-text-color);
+  font-size: 2.2em;
+  margin: 0;
+  justify-self: start;
+  align-self: flex-end;
+}
+
+.subtitle {
+  margin: 0.5em;
+  color: var(--main-text-color);
+  font-family: var(--main-font);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}

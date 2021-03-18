@@ -1,4 +1,21 @@
 .btn {
-  background-color: #ffbd4b;
-  border-radius: 20px;
+  min-width: 280px;
+  background-color: var(--button-bg-color);
+  border: none;
+  border-radius: 41pt;
+  box-shadow: 2px 2px 3px black;
+  font-family: var(--button-font);
+  font-weight: 400;
+  font-size: 2em;
+  font-style: italic;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+.icon {
+  display: grid;
+  align-items: center;
+  padding: 0 0 0 10px;
 }
