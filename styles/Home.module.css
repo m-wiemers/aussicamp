@@ -1,19 +1,13 @@
 .container {
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto;
   align-items: center;
 }
 
 .main {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .footer {
-  width: 100%;
-  height: 100px;
-  justify-content: center;
-  align-items: center;
+  height: 4em;
 }
