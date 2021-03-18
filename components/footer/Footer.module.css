@@ -16,3 +16,7 @@
   border: none;
   background-color: var(--main-color);
 }
+
+.buttonActive {
+  fill: var(--menu-active-color);
+}

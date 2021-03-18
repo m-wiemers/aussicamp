@@ -1,12 +1,12 @@
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import Footer from "./Footer";
+import Footer, { FooterProps } from "./Footer";
 
 export default {
   title: "Common/Footer",
   component: Footer,
 };
 
-const Template: Story = (args) => <Footer {...args} />;
+const Template: Story<FooterProps> = (args) => <Footer {...args} />;
 
 export const Foot = Template.bind({});

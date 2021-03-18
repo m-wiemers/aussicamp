@@ -18,7 +18,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <Footer />
+        <Footer isActive={"list"} />
       </footer>
     </div>
   );
