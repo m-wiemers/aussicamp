@@ -5,7 +5,8 @@
 .date {
   justify-self: center;
   margin-top: 0.5em;
-  max-width: 350px;
+  min-width: 350px;
+  max-width: 90vw;
   color: var(--secondary-text-color);
   font-family: var(--button-font);
   font-size: 1.2em;

@@ -1,9 +1,17 @@
 .container {
+  display: grid;
+  align-items: center;
   width: 100%;
 }
 
-.settings :only-child {
+.main {
   margin-top: 1em;
-  min-width: 350px;
+  display: grid;
   justify-items: center;
+  text-align: center;
+  row-gap: 1em;
+}
+
+.footer {
+  height: 5em;
 }
