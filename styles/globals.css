@@ -27,8 +27,10 @@ body {
 
 h1 {
   font-family: var(--main-font);
-  font-size: 16rem;
+  font-size: 2.5rem;
   font-weight: 500;
+  padding: 0;
+  margin: 0;
 }
 
 a {

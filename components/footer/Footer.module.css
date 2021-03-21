@@ -1,0 +1,22 @@
+.footer {
+  background-color: var(--main-color);
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 1em;
+  border-radius: 20px 20px 0 0;
+}
+
+.button {
+  fill: var(--main-text-color);
+  border: none;
+  background-color: var(--main-color);
+}
+
+.buttonActive {
+  fill: var(--menu-active-color);
+}
