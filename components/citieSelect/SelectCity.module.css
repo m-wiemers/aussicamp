@@ -3,6 +3,9 @@
 }
 
 .cityselect {
+  justify-self: center;
+  margin-top: 0.5em;
+  max-width: 350px;
   color: var(--secondary-text-color);
   font-family: var(--button-font);
   font-size: 1.2em;

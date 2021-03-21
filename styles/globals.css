@@ -44,7 +44,6 @@ a {
 
 .label {
   display: grid;
-  row-gap: 1em;
   color: var(--secondary-text-color);
   font-family: var(--main-font);
   font-weight: 700;
