@@ -11,6 +11,7 @@
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .icon {
