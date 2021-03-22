@@ -18,8 +18,8 @@ function DayCounter({
 
   useEffect(() => {
     const firstDate = new Date(startDate);
-    const lastDatee = new Date(lastDate);
-    const differentInTime = lastDatee.getTime() - firstDate.getTime();
+    const endDate = new Date(lastDate);
+    const differentInTime = endDate.getTime() - firstDate.getTime();
     const differentInDays = differentInTime / (1000 * 60 * 60 * 24) + 1;
     setDayCount(differentInDays);
   }, [startDate, lastDate]);

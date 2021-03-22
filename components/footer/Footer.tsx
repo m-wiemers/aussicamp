@@ -5,7 +5,7 @@ import CalenderIcon from "../icons/CalenderIcon";
 import SettingIcon from "../icons/SettingIcon";
 
 export type FooterProps = {
-  activeButton: "list" | "calender" | "map" | "settings";
+  activeButton: "list" | "calendar" | "map" | "settings";
 };
 
 function Footer({ activeButton: isActive }: FooterProps) {
@@ -20,7 +20,7 @@ function Footer({ activeButton: isActive }: FooterProps) {
       </button>
       <button
         className={`${styles.button} ${
-          isActive === "calender" ? styles.buttonActive : ""
+          isActive === "calendar" ? styles.buttonActive : ""
         }`}
       >
         <CalenderIcon />
