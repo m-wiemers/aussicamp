@@ -5,10 +5,10 @@ import CalenderIcon from "../icons/CalenderIcon";
 import SettingIcon from "../icons/SettingIcon";
 
 export type FooterProps = {
-  isActive: "list" | "calender" | "map" | "settings";
+  activeButton: "list" | "calender" | "map" | "settings";
 };
 
-function Footer({ isActive }: FooterProps) {
+function Footer({ activeButton: isActive }: FooterProps) {
   return (
     <div className={styles.footer}>
       <button

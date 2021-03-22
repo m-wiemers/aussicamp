@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/button/Button";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
@@ -8,8 +8,24 @@ import Header from "../components/header/Header";
 import styles from "./../styles/Settings.module.css";
 
 export default function settings() {
+  const [selectStartCity, setSelectStartCity] = useState("");
+  const [selectLastCity, setSelectLastCity] = useState("");
+
+  useEffect(() => {
+    const lastStartValue = localStorage.getItem("StartCity");
+    setSelectStartCity(lastStartValue);
+    const lastLastCity = localStorage.getItem("LastCity");
+    setSelectLastCity(lastLastCity);
+  }, []);
+
   function handleStartLocationChange(event) {
-    localStorage.setItem("StartCity", event.target.value);
+    const startLocation = event.target.value;
+    localStorage.setItem("StartCity", startLocation);
+  }
+
+  function handleLastLocationChange(event) {
+    const lastLocation = event.target.value;
+    localStorage.setItem("LastCity", lastLocation);
   }
 
   const bigCities = [
@@ -24,6 +40,7 @@ export default function settings() {
     "Perth",
     "Sydney",
   ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -35,35 +52,29 @@ export default function settings() {
 
       <main className={styles.main}>
         <SelectCity
-          label={"start location"}
+          label={"Start location"}
+          selected={selectStartCity}
           value={bigCities}
           onSelect={handleStartLocationChange}
         />
-
         <SelectCity
-          label={"end location"}
+          label={"End location"}
+          selected={selectLastCity}
           value={bigCities}
-          onSelect={() => <p></p>}
+          onSelect={handleLastLocationChange}
         />
-
         <DateInput
-          label={"start date"}
-          value={"2020-04-01"}
+          label={"Start date"}
+          value={""}
           onDateSelect={() => <p></p>}
         />
-
-        <DateInput
-          label={"end date"}
-          value={"2021-04-01"}
-          onDateSelect={() => <p></p>}
-        />
-
-        <div>
-          <Button label={"continue"} onButtonClick={() => <p></p>} />
-        </div>
+        <DateInput label={"End date"} value={""} onDateSelect={() => <p></p>} />
       </main>
+      <div className={styles.button}>
+        <Button label={"continue"} onButtonClick={() => <p></p>} />
+      </div>
       <footer className={styles.footer}>
-        <Footer isActive={"settings"} />
+        <Footer activeButton={"settings"} />
       </footer>
     </div>
   );
