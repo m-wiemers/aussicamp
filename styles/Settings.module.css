@@ -5,6 +5,7 @@
 }
 
 .main {
+  text-align: center;
   margin-top: 1em;
   display: grid;
   justify-items: center;
