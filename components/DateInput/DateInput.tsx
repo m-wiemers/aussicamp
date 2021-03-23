@@ -17,8 +17,6 @@ function DateInput({ label, onDateSelect, value }: DateProps) {
           onChange={onDateSelect}
           type="date"
           value={value}
-          min="2020-03-17"
-          max="2024-12-31"
         />
       </label>
     </div>
