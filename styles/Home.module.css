@@ -1,13 +1,23 @@
 .container {
-  display: grid;
-  grid-template-rows: auto;
-  align-items: center;
+  background-color: var(--secondary-color);
+  background-image: url(../public/background.svg);
+  background-size: 90vw;
+  background-repeat: no-repeat;
 }
 
 .main {
+  display: grid;
+  grid-template-rows: 35% 1fr;
   text-align: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.footer {
-  height: 4em;
+.logo {
+  grid-row: 2;
+}
+
+.button {
+  grid-row: end;
+  margin-bottom: 3em;
 }
