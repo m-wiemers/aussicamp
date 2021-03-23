@@ -103,7 +103,7 @@ export default function settings() {
         />
       </main>
       <div className={styles.button}>
-        <Button label={"continue"} onButtonClick={() => <p></p>} />
+        <Button label={"continue"} link="#" />
       </div>
       <footer className={styles.footer}>
         <Footer activeButton={"settings"} />

@@ -16,7 +16,7 @@ export default function Home() {
           <Logo subtitle={true} />
         </div>
         <div className={styles.button}>
-          <Button label="here we go" onButtonClick={() => <p></p>} />
+          <Button label="here we go" link={"/settings"} />
         </div>
       </main>
     </div>
