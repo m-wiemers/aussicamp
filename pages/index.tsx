@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Footer from "../components/footer/Footer";
-import Header from "../components/header/Header";
+import Button from "../components/button/Button";
+import Logo from "../components/logo/Logo";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -11,15 +11,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
       <main className={styles.main}>
-        <h1>Wilkommen</h1>
+        <div className={styles.logo}>
+          <Logo subtitle={true} />
+        </div>
+        <div className={styles.button}>
+          <Button label="here we go" onButtonClick={() => <p></p>} />
+        </div>
       </main>
-
-      <footer className={styles.footer}>
-        <Footer activeButton={"list"} />
-      </footer>
     </div>
   );
 }
