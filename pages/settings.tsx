@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Button from "../components/button/Button";
 import SelectCity from "../components/citieSelect/SelectCity";
+import { EndCity } from "../components/citieSelect/SelectCity.stories";
 import DateInput from "../components/DateInput/DateInput";
 import DayCounter from "../components/dayCounter/DayCounter";
 import Footer from "../components/footer/Footer";
@@ -31,11 +32,13 @@ export default function settings() {
   function handleStartLocationChange(event) {
     const startLocation = event.target.value;
     localStorage.setItem("StartCity", startLocation);
+    setSelectStartCity(startLocation);
   }
 
   function handleLastLocationChange(event) {
     const lastLocation = event.target.value;
     localStorage.setItem("LastCity", lastLocation);
+    setSelectLastCity(lastLocation);
   }
 
   function handleStartDateChange(event) {
