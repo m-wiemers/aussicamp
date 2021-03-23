@@ -3,6 +3,7 @@ import ListIcon from "../icons/ListIcon";
 import styles from "./Footer.module.css";
 import CalenderIcon from "../icons/CalenderIcon";
 import SettingIcon from "../icons/SettingIcon";
+import Link from "next/link";
 
 export type FooterProps = {
   activeButton: "list" | "calendar" | "map" | "settings";
@@ -11,34 +12,42 @@ export type FooterProps = {
 function Footer({ activeButton: isActive }: FooterProps) {
   return (
     <div className={styles.footer}>
-      <button
-        className={`${styles.button} ${
-          isActive === "list" ? styles.buttonActive : ""
-        }`}
-      >
-        <ListIcon />
-      </button>
-      <button
-        className={`${styles.button} ${
-          isActive === "calendar" ? styles.buttonActive : ""
-        }`}
-      >
-        <CalenderIcon />
-      </button>
-      <button
-        className={`${styles.button} ${
-          isActive === "map" ? styles.buttonActive : ""
-        }`}
-      >
-        <MapIcon />
-      </button>
-      <button
-        className={`${styles.button} ${
-          isActive === "settings" ? styles.buttonActive : ""
-        }`}
-      >
-        <SettingIcon />
-      </button>
+      <Link href="/list">
+        <div
+          className={`${styles.button} ${
+            isActive === "list" ? styles.buttonActive : ""
+          }`}
+        >
+          <ListIcon />
+        </div>
+      </Link>
+      <Link href="/calendar">
+        <div
+          className={`${styles.button} ${
+            isActive === "calendar" ? styles.buttonActive : ""
+          }`}
+        >
+          <CalenderIcon />
+        </div>
+      </Link>
+      <Link href="/map">
+        <div
+          className={`${styles.button} ${
+            isActive === "map" ? styles.buttonActive : ""
+          }`}
+        >
+          <MapIcon />
+        </div>
+      </Link>
+      <Link href="/settings">
+        <div
+          className={`${styles.button} ${
+            isActive === "settings" ? styles.buttonActive : ""
+          }`}
+        >
+          <SettingIcon />
+        </div>
+      </Link>
     </div>
   );
 }

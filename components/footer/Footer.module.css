@@ -13,9 +13,8 @@
 }
 
 .button {
+  cursor: pointer;
   fill: var(--main-text-color);
-  border: none;
-  background-color: var(--main-color);
 }
 
 .buttonActive {

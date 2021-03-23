@@ -1,13 +1,14 @@
 import Logo from "../logo/Logo";
 import styles from "./Header.module.css";
+import Link from "next/link";
 
 function Header() {
   return (
-    <div className={styles.container}>
-      <button className={styles.button}>
+    <Link href="/">
+      <div className={styles.container}>
         <Logo subtitle={false} />
-      </button>
-    </div>
+      </div>
+    </Link>
   );
 }
 

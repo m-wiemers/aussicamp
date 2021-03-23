@@ -7,10 +7,5 @@
   padding: 0.5em;
   background-color: var(--main-color);
   box-shadow: 2px 2px 3px black;
-}
-
-.button {
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  cursor: pointer;
 }
