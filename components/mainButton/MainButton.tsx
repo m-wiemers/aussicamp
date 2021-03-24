@@ -24,6 +24,11 @@ function MainButton({
   }
 
   async function handleButtonClick() {
+    if (days < 1) {
+      alert("what`s wrong with you?");
+      return;
+    }
+
     const storedLocation = localStorage.getItem("locations");
     if (storedLocation === null) {
       const arr = Array(days - 1).fill("");

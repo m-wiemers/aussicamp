@@ -1,18 +1,25 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Button from "../components/button/Button";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
 import DayCounter from "../components/dayCounter/DayCounter";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
+import MainButton from "../components/mainButton/MainButton";
 import styles from "./../styles/Settings.module.css";
+import DayCount from "../utils/dayCount";
 
 export default function settings() {
   const [selectStartCity, setSelectStartCity] = useState("");
   const [selectLastCity, setSelectLastCity] = useState("");
   const [startDate, setStartDate] = useState("");
   const [lastDate, setLastDate] = useState("");
+  const [days, setDays] = useState(null);
+
+  useEffect(() => {
+    const days = DayCount(startDate, lastDate);
+    setDays(days);
+  }, [startDate, lastDate]);
 
   useEffect(() => {
     const preStartValue = localStorage.getItem("StartCity");
@@ -32,12 +39,26 @@ export default function settings() {
     const startLocation = event.target.value;
     localStorage.setItem("StartCity", startLocation);
     setSelectStartCity(startLocation);
+    if (!JSON.parse(localStorage.getItem("locations"))) {
+      return;
+    } else {
+      const firstLocation = JSON.parse(localStorage.getItem("locations"));
+      firstLocation.splice(0, 1, startLocation);
+      localStorage.setItem("locations", JSON.stringify(firstLocation));
+    }
   }
 
   function handleLastLocationChange(event) {
     const lastLocation = event.target.value;
     localStorage.setItem("LastCity", lastLocation);
     setSelectLastCity(lastLocation);
+    if (!JSON.parse(localStorage.getItem("locations"))) {
+      return;
+    } else {
+      const preLastLocation = JSON.parse(localStorage.getItem("locations"));
+      preLastLocation.splice(-1, 1, lastLocation);
+      localStorage.setItem("locations", JSON.stringify(preLastLocation));
+    }
   }
 
   function handleStartDateChange(event) {
@@ -105,7 +126,13 @@ export default function settings() {
         />
       </main>
       <div className={styles.button}>
-        <Button label={"continue"} link="#" />
+        <MainButton
+          days={days}
+          label={"continue"}
+          startCity={selectStartCity}
+          endCity={selectLastCity}
+          link="#"
+        />
       </div>
       <footer className={styles.footer}>
         <Footer activeButton={"settings"} />
