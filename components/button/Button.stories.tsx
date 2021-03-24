@@ -12,4 +12,5 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 export const MainButton = Template.bind({});
 MainButton.args = {
   label: "HERE WE GO",
+  link: "",
 };

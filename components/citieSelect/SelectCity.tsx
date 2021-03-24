@@ -10,11 +10,7 @@ export type SelectProps = {
 
 function SelectCity({ label, selected, value, onSelect }: SelectProps) {
   selected = selected || "Sydney";
-  const cities = value.map((city) => (
-    <option selected={selected === city} key={city}>
-      {city}
-    </option>
-  ));
+  const cities = value.map((city) => <option key={city}>{city}</option>);
   return (
     <div className={styles.container}>
       <label className="label">
@@ -23,6 +19,7 @@ function SelectCity({ label, selected, value, onSelect }: SelectProps) {
           className={styles.cityselect}
           name="StartCity"
           onChange={onSelect}
+          value={selected}
         >
           {cities}
         </select>

@@ -31,11 +31,13 @@ export default function settings() {
   function handleStartLocationChange(event) {
     const startLocation = event.target.value;
     localStorage.setItem("StartCity", startLocation);
+    setSelectStartCity(startLocation);
   }
 
   function handleLastLocationChange(event) {
     const lastLocation = event.target.value;
     localStorage.setItem("LastCity", lastLocation);
+    setSelectLastCity(lastLocation);
   }
 
   function handleStartDateChange(event) {
@@ -103,7 +105,7 @@ export default function settings() {
         />
       </main>
       <div className={styles.button}>
-        <Button label={"continue"} onButtonClick={() => <p></p>} />
+        <Button label={"continue"} link="#" />
       </div>
       <footer className={styles.footer}>
         <Footer activeButton={"settings"} />

@@ -1,20 +1,22 @@
-import { MouseEventHandler } from "react";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 import styles from "./Button.module.css";
+import Link from "next/link";
 
 export type ButtonProps = {
   label: string;
-  onButtonClick: MouseEventHandler<HTMLButtonElement>;
+  link: string;
 };
 
-function Button({ label, onButtonClick }: ButtonProps) {
+function Button({ label, link }: ButtonProps) {
   return (
-    <button className={styles.btn} onClick={onButtonClick}>
-      {label}
-      <span className={styles.icon}>
-        <ArrowRightIcon />
-      </span>
-    </button>
+    <Link href={link}>
+      <div className={styles.btn}>
+        {label}
+        <span className={styles.icon}>
+          <ArrowRightIcon />
+        </span>
+      </div>
+    </Link>
   );
 }
 
