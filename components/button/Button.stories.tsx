@@ -9,8 +9,8 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
-export const MainButton = Template.bind({});
-MainButton.args = {
+export const FirstButton = Template.bind({});
+FirstButton.args = {
   label: "HERE WE GO",
   link: "",
 };
