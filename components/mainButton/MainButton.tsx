@@ -25,7 +25,7 @@ function MainButton({
 
   async function handleButtonClick() {
     if (days < 1) {
-      alert("what`s wrong with you?");
+      alert("The end date must be after the start date!");
       return;
     }
 
