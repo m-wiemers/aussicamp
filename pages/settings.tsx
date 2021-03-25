@@ -70,8 +70,6 @@ export default function settings() {
     setLastDate(lastDate);
   }
 
-  console.log(typeof days);
-
   const bigCities = [
     "Adelaide",
     "Alice Springs",
@@ -88,7 +86,7 @@ export default function settings() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>AussCamp</title>
+        <title>AussiCamp</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

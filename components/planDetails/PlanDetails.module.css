@@ -1,0 +1,47 @@
+.container {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  margin: 0;
+  color: var(--main-text-color);
+}
+
+.days {
+  color: var(--secondary-color);
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.component {
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template: 50% 50% / 70% 15% 15%;
+  align-items: center;
+  background-color: var(--secondary-color);
+  margin: 0.2em 0;
+  padding: 0.5em;
+  border-radius: 30px;
+}
+
+.city {
+  grid-row: 1;
+  margin: 0.5em;
+}
+
+.places {
+  grid-row: 2;
+  margin: 0.5em;
+}
+
+.editIcon {
+  justify-self: center;
+  grid-column: 2;
+  grid-row: 1 / 3;
+  fill: var(--menu-button-color);
+}
+
+.DragIcon {
+  justify-self: center;
+  grid-column: 3;
+  grid-row: 1 / 3;
+  fill: var(--menu-button-color);
+}
