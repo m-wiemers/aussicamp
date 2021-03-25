@@ -31,7 +31,7 @@ function MainButton({
 
     const storedLocation = localStorage.getItem("locations");
     if (storedLocation === null) {
-      const arr = Array(days - 1).fill("");
+      const arr = Array(days - 1).fill("no City");
       addCitysToArray(arr);
       return;
     }
@@ -39,7 +39,7 @@ function MainButton({
       const daysPlusDays = JSON.parse(storedLocation).length + days;
       const arr = Array(
         daysPlusDays - JSON.parse(storedLocation).length - 1
-      ).fill("");
+      ).fill("no City");
       addCitysToArray(arr);
       return;
     }
@@ -49,7 +49,7 @@ function MainButton({
           "Your original plan was longer. We are creating a new plan now. Your old plan will be deleted!"
         )
       ) {
-        const arr = Array(days - 1).fill("");
+        const arr = Array(days - 1).fill("no City");
         addCitysToArray(arr);
         return;
       }
