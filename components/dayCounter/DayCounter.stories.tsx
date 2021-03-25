@@ -12,7 +12,6 @@ const Template: Story<DayCounterProps> = (args) => <DayCounter {...args} />;
 export const DayCount = Template.bind({});
 DayCount.args = {
   label: "Your Plan has",
-  startDate: "2021-03-01",
-  lastDate: "2021-04-02",
+  days: 14,
   secondLabel: "days",
 };

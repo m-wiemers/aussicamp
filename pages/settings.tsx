@@ -24,13 +24,10 @@ export default function settings() {
   useEffect(() => {
     const preStartValue = localStorage.getItem("StartCity");
     setSelectStartCity(preStartValue);
-    const preLastCity = localStorage.getItem("LastCity");
-    setSelectLastCity(preLastCity);
-  }, []);
-
-  useEffect(() => {
     const preStartDate = localStorage.getItem("StartDate");
     setStartDate(preStartDate);
+    const preLastCity = localStorage.getItem("LastCity");
+    setSelectLastCity(preLastCity);
     const preLastDate = localStorage.getItem("LastDate");
     setLastDate(preLastDate);
   }, []);
@@ -72,6 +69,8 @@ export default function settings() {
     localStorage.setItem("LastDate", lastDate);
     setLastDate(lastDate);
   }
+
+  console.log(typeof days);
 
   const bigCities = [
     "Adelaide",
@@ -118,12 +117,7 @@ export default function settings() {
           value={lastDate}
           onDateSelect={handleLastDateChange}
         />
-        <DayCounter
-          label="Your plan has"
-          lastDate={lastDate}
-          startDate={startDate}
-          secondLabel="days"
-        />
+        <DayCounter label="Your plan has" days={days} secondLabel="days" />
       </main>
       <div className={styles.button}>
         <MainButton

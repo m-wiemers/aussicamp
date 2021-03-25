@@ -1,30 +1,13 @@
-import { useEffect, useState } from "react";
 import styles from "./DayCounter.module.css";
 
 export type DayCounterProps = {
   label: string;
-  lastDate: string;
-  startDate: string;
+  days: number;
   secondLabel: string;
 };
 
-function DayCounter({
-  label,
-  lastDate,
-  startDate,
-  secondLabel,
-}: DayCounterProps) {
-  const [dayCount, setDayCount] = useState(null);
-
-  useEffect(() => {
-    const firstDate = new Date(startDate);
-    const endDate = new Date(lastDate);
-    const differentInTime = endDate.getTime() - firstDate.getTime();
-    const differentInDays = differentInTime / (1000 * 60 * 60 * 24) + 1;
-    setDayCount(differentInDays);
-  }, [startDate, lastDate]);
-
-  if (dayCount <= 1) {
+function DayCounter({ label, days, secondLabel }: DayCounterProps) {
+  if (days <= 1 || days === undefined) {
     return (
       <div className={styles.container}>
         <p></p>
@@ -34,7 +17,7 @@ function DayCounter({
     return (
       <div className={styles.container}>
         <p>
-          {label} {dayCount} {secondLabel}
+          {label} {days} {secondLabel}
         </p>
       </div>
     );
