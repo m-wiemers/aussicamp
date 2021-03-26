@@ -4,6 +4,7 @@
   width: 100vw;
   height: 100vh;
   grid-template-areas: "header" "content" "footer";
+  overflow: hidden;
 }
 
 .divhome {
