@@ -1,0 +1,30 @@
+.div {
+  display: grid;
+  grid-template-rows: 4em 1fr 4em;
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas: "header" "content" "footer";
+}
+
+.divhome {
+  width: 100vw;
+}
+
+.header {
+  z-index: 1;
+  grid-area: header;
+  grid-row: 1;
+  height: 100%;
+}
+
+.content {
+  grid-area: content;
+  overflow: auto;
+  height: 100%;
+}
+
+.footer {
+  z-index: 1;
+  grid-area: footer;
+  height: 100%;
+}

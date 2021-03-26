@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
 import DayCounter from "../components/dayCounter/DayCounter";
-import Footer from "../components/footer/Footer";
-import Header from "../components/header/Header";
 import MainButton from "../components/mainButton/MainButton";
 import styles from "./../styles/Settings.module.css";
 import DayCount from "../utils/dayCount";
@@ -84,14 +82,11 @@ export default function settings() {
   ];
 
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>AussiCamp</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Header />
-
       <main className={styles.main}>
         <SelectCity
           label={"Start location"}
@@ -126,9 +121,6 @@ export default function settings() {
           link="#"
         />
       </div>
-      <footer className={styles.footer}>
-        <Footer activeButton={"settings"} />
-      </footer>
-    </div>
+    </>
   );
 }
