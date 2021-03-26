@@ -1,3 +1,4 @@
+import { start } from "node:repl";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 import styles from "./MainButton.module.css";
 
@@ -26,6 +27,10 @@ function MainButton({
   async function handleButtonClick() {
     if (days < 1) {
       alert("The end date must be after the start date!");
+      return;
+    }
+    if (days === undefined) {
+      alert("Please select start- and end Date first!");
       return;
     }
 

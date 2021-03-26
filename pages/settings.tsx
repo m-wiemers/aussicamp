@@ -21,10 +21,16 @@ export default function settings() {
 
   useEffect(() => {
     const preStartValue = localStorage.getItem("StartCity");
+    if (!preStartValue) {
+      localStorage.setItem("StartCity", "Sydney");
+    }
     setSelectStartCity(preStartValue);
     const preStartDate = localStorage.getItem("StartDate");
     setStartDate(preStartDate);
     const preLastCity = localStorage.getItem("LastCity");
+    if (!preLastCity) {
+      localStorage.setItem("LastCity", "Sydney");
+    }
     setSelectLastCity(preLastCity);
     const preLastDate = localStorage.getItem("LastDate");
     setLastDate(preLastDate);
@@ -118,7 +124,7 @@ export default function settings() {
           label={"continue"}
           startCity={selectStartCity}
           endCity={selectLastCity}
-          link="#"
+          link="/plan"
         />
       </div>
     </>
