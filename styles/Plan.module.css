@@ -1,0 +1,21 @@
+.container {
+  background-color: var(--main-bg-color);
+}
+
+.main {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+}
+
+.section {
+  margin-bottom: 1em;
+  padding: 0;
+  min-width: 320px;
+  max-width: 90vw;
+  list-style: none;
+}
+
+.list {
+  width: 100%;
+}

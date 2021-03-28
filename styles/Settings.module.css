@@ -1,28 +1,16 @@
-.container {
-  display: grid;
-  align-items: center;
-  width: 100%;
-}
-
 .main {
   text-align: center;
-  margin-top: 1em;
+  margin-top: 2em;
   display: grid;
   justify-items: center;
   row-gap: 1em;
 }
 
-.main :only-child {
+.main :last-child {
   min-width: 320px;
-  max-width: 90vw;
 }
 
 .button {
-  margin-top: 2em;
-  justify-self: center;
-  max-width: 350px;
-}
-
-.footer {
-  height: 5em;
+  display: grid;
+  justify-items: center;
 }

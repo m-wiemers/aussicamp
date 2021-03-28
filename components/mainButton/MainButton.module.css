@@ -9,13 +9,15 @@
   font-style: italic;
   padding: 15px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .icon {
+  grid-column: 1;
+  grid-column-start: 2;
   display: grid;
   align-items: center;
   padding: 0 0 0 10px;
