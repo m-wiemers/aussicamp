@@ -1,4 +1,3 @@
-import { start } from "node:repl";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 import styles from "./MainButton.module.css";
 
@@ -21,7 +20,6 @@ function MainButton({
     arr[0] = startCity;
     arr.push(endCity);
     localStorage.setItem("locations", JSON.stringify(arr));
-    location.href = link;
   }
 
   async function handleButtonClick() {
@@ -38,6 +36,7 @@ function MainButton({
     if (storedLocation === null) {
       const arr = Array(days - 1).fill("no City");
       addCitysToArray(arr);
+      location.href = link;
       return;
     }
     if (JSON.parse(storedLocation).length < days) {
@@ -46,6 +45,7 @@ function MainButton({
         daysPlusDays - JSON.parse(storedLocation).length - 1
       ).fill("no City");
       addCitysToArray(arr);
+      location.href = link;
       return;
     }
     if (JSON.parse(storedLocation).length > days) {
@@ -56,10 +56,12 @@ function MainButton({
       ) {
         const arr = Array(days - 1).fill("no City");
         addCitysToArray(arr);
+        location.href = link;
         return;
       }
     }
     if (JSON.parse(storedLocation).length === days) {
+      location.href = link;
       return;
     }
   }

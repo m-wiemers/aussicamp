@@ -1,10 +1,9 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import PlanDetails from "../components/planDetails/PlanDetails";
 import styles from "../styles/Plan.module.css";
 
 export default function Plan() {
-  const [days, setDays] = useState([]);
+  const [cities, setDays] = useState([]);
 
   useEffect(() => {
     const daysOfLS = localStorage.getItem("locations");
@@ -16,24 +15,22 @@ export default function Plan() {
     }
   }, []);
 
-  const day = days.map((day, index) => (
+  const city = cities.map((city, index) => (
     <li key={index} className={styles.list}>
-      <PlanDetails label={index + 1} cityName={day} link={day} places={0} />
+      <PlanDetails
+        label={index + 1}
+        cityName={city}
+        link={"day".concat(index.toString())}
+        places={0}
+      />
     </li>
   ));
 
   return (
-    <div>
-      <Head>
-        <title>AussiCamp</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <div className={styles.container}>
-        <main className={styles.main}>
-          <ul className={styles.section}>{day}</ul>
-        </main>
-      </div>
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <ul className={styles.section}>{city}</ul>
+      </main>
     </div>
   );
 }

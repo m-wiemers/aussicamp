@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
@@ -89,10 +88,6 @@ export default function settings() {
 
   return (
     <>
-      <Head>
-        <title>AussiCamp</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className={styles.main}>
         <SelectCity
           label={"Start location"}
