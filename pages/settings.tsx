@@ -111,7 +111,9 @@ export default function settings() {
           value={lastDate}
           onDateSelect={handleLastDateChange}
         />
-        <DayCounter label="Your plan has" days={days} secondLabel="days" />
+        {days && (
+          <DayCounter label="Your plan has" days={days} secondLabel="days" />
+        )}
       </main>
       <div className={styles.button}>
         <MainButton

@@ -1,4 +1,4 @@
-import Button from "../components/button/Button";
+import LinkButton from "../components/button/LinkButton";
 import Logo from "../components/logo/Logo";
 import styles from "../styles/Home.module.css";
 
@@ -10,7 +10,7 @@ export default function Home() {
           <Logo subtitle={true} />
         </div>
         <div className={styles.button}>
-          <Button label="here we go" link={"/settings"} />
+          <LinkButton label="here we go" link={"/settings"} />
         </div>
       </main>
     </div>
