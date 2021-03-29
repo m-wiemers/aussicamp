@@ -16,7 +16,7 @@
 }
 
 .icon {
+  padding-left: 0.3em;
   display: grid;
   grid-column: end;
-  padding: 0;
 }
