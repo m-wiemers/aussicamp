@@ -1,7 +1,7 @@
 import ArrowRightIcon from "../icons/ArrowRightIcon";
-import styles from "./MainButton.module.css";
+import styles from "./ClickButton.module.css";
 
-export type MainButtonProps = {
+export type ClickButtonProps = {
   label: string;
   days: number;
   startCity: string;
@@ -9,13 +9,13 @@ export type MainButtonProps = {
   link: string;
 };
 
-function MainButton({
+function ClickButton({
   label,
   days,
   startCity,
   endCity,
   link,
-}: MainButtonProps) {
+}: ClickButtonProps) {
   function addCitysToArray(arr: string[]) {
     arr[0] = startCity;
     arr.push(endCity);
@@ -76,4 +76,4 @@ function MainButton({
   );
 }
 
-export default MainButton;
+export default ClickButton;

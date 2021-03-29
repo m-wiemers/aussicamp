@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
 import DayCounter from "../components/dayCounter/DayCounter";
-import MainButton from "../components/mainButton/MainButton";
+import MainButton from "../components/clickButton/ClickButton";
 import styles from "./../styles/Settings.module.css";
 import DayCount from "../utils/dayCount";
 
