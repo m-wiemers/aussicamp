@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
         <div className={styles.footer}>
-          {router.pathname !== "/" && <Footer activeButton={router.pathname} />}
+          {router.pathname !== "/" && <Footer activeSite={router.pathname} />}
         </div>
       </div>
     </>

@@ -6,16 +6,16 @@ import SettingIcon from "../icons/SettingIcon";
 import Link from "next/link";
 
 export type FooterProps = {
-  activeButton: string;
+  activeSite: string;
 };
 
-function Footer({ activeButton: activeButton }: FooterProps) {
+function Footer({ activeSite }: FooterProps) {
   return (
     <div className={styles.footer}>
       <Link href="/plan">
         <div
           className={`${styles.button} ${
-            activeButton === "/plan" ? styles.buttonActive : ""
+            activeSite === "/plan" ? styles.buttonActive : ""
           }`}
         >
           <ListIcon />
@@ -24,7 +24,7 @@ function Footer({ activeButton: activeButton }: FooterProps) {
       <Link href="/calendar">
         <div
           className={`${styles.button} ${
-            activeButton === "/calendar" ? styles.buttonActive : ""
+            activeSite === "/calendar" ? styles.buttonActive : ""
           }`}
         >
           <CalenderIcon />
@@ -33,7 +33,7 @@ function Footer({ activeButton: activeButton }: FooterProps) {
       <Link href="/map">
         <div
           className={`${styles.button} ${
-            activeButton === "/map" ? styles.buttonActive : ""
+            activeSite === "/map" ? styles.buttonActive : ""
           }`}
         >
           <MapIcon />
@@ -42,7 +42,7 @@ function Footer({ activeButton: activeButton }: FooterProps) {
       <Link href="/settings">
         <div
           className={`${styles.button} ${
-            activeButton === "/settings" ? styles.buttonActive : ""
+            activeSite === "/settings" ? styles.buttonActive : ""
           }`}
         >
           <SettingIcon />
