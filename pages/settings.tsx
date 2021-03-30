@@ -22,7 +22,7 @@ export default function settings() {
 
   useEffect(() => {
     const days = DayCount(startDate, lastDate);
-    setDays(days);
+    setDays(Math.round(days));
   }, [startDate, lastDate]);
 
   function handleStartLocationChange(event) {
