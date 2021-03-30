@@ -10,7 +10,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function settings() {
   const router = useRouter();
-  const [days, setDays] = useState(null);
+  const [days, setDays] = useState<number>(null);
   const [startDate, setStartDate] = useLocalStorage<string>("StartDate", "");
   const [lastDate, setLastDate] = useLocalStorage<string>("LastDate", "");
   const [startCity, setStartCity] = useLocalStorage<string>(
@@ -123,7 +123,7 @@ export default function settings() {
           value={lastDate}
           onDateSelect={handleLastDateChange}
         />
-        {days && (
+        {days && !isNaN(days) && (
           <DayCounter label="Your plan has" days={days} secondLabel="days" />
         )}
       </main>
