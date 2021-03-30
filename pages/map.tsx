@@ -32,9 +32,7 @@ export default function map() {
       longitude={campsite.lon}
       latitude={campsite.lat}
     >
-      <div>
-        <AussiTentIcon className={styles.icon} />
-      </div>
+      <div>🛌</div>
     </Marker>
   ));
 
