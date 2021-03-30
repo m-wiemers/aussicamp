@@ -1,0 +1,8 @@
+.map {
+  display: grid;
+  justify-content: center;
+}
+
+.icon {
+  size: 0.5em;
+}

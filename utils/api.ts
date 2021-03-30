@@ -33,6 +33,10 @@ export async function getCityByName(name: string): Promise<City> {
   return await fetchURL<City>(`/api/opentripmap/${name}`);
 }
 
-export async function getCampSites(campsite: string): Promise<Campsite> {
+export async function getCampSite(campsite: string): Promise<Campsite> {
   return await fetchURL<Campsite>(`/api/opentripmap/campsites/${campsite}`);
+}
+
+export async function getCampSites(): Promise<Campsite[]> {
+  return await fetchURL<Campsite[]>("/api/opentripmap/campsites");
 }
