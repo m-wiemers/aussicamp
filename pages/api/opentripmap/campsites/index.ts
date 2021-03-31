@@ -12,7 +12,7 @@ export default async function getCampSites(
   res: NextApiResponse
 ) {
   const results = await fetch(
-    `https://api.opentripmap.com/0.1/en/places/bbox?lon_min=${minLon}&lon_max=${maxLon}&lat_min=${minLat}&lat_max=${maxLat}&kinds=${campsites}&format=json&apikey=${apiKey}`
+    `https://api.opentripmap.com/0.1/en/places/bbox?lon_min=${minLon}&lon_max=${maxLon}&lat_min=${minLat}&lat_max=${maxLat}&kinds=${campsites}&format=json&limit=5000&apikey=${apiKey}`
   ).then((response) => {
     return response.json();
   });
