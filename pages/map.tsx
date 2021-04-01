@@ -82,6 +82,7 @@ export default function map({
           >
             <div>
               <h2>{selectedCampSite.name}</h2>
+              <p>{selectedCampSite.rate}</p>
             </div>
           </Popup>
         )}

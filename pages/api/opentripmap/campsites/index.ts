@@ -22,6 +22,7 @@ export default async function getCampSites(
       name: campsite.name,
       lon: campsite.point.lon,
       lat: campsite.point.lat,
+      rate: campsite.rate,
     };
   });
 

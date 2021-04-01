@@ -18,6 +18,7 @@ export type Campsite = {
   name: string;
   lon: number;
   lat: number;
+  rate: number;
 };
 
 async function fetchURL<T>(url: string): Promise<T> {
