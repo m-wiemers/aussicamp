@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import styles from "../styles/Map.module.css";
 import { Campsite, getCampSites } from "../utils/api";
+import CampMarkerIcon from "../components/icons/CampMarkerIcon";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const apiKey = process.env.OTM_API_KEY;
@@ -20,8 +21,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&=startCity=${startCity}`
   );
   const startCoordinates: coordinates = await res.json();
-  const latitude = startCoordinates.lat;
-  const longitude = startCoordinates.lon;
+  const latitude = startCoordinates.lat ?? -23.863032020795533;
+  const longitude = startCoordinates.lon ?? 135.22795478617115;
   return { props: { latitude, longitude } };
 };
 
@@ -30,6 +31,7 @@ export default function map({
   longitude,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [campsites, setCampsites] = useState<Campsite[]>([]);
+  const [selectedCampSite, setSelectedCampSite] = useState(null);
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
@@ -40,20 +42,32 @@ export default function map({
 
   useEffect(() => {
     getCampSites().then(setCampsites);
+    const listener = (e) => {
+      if (e.key === "Escape") {
+        setSelectedCampSite(null);
+      }
+    };
+    window.addEventListener("keydown", listener);
   }, []);
 
   if (!campsites) {
     return <div>Loading...</div>;
   }
 
-  const campsite = campsites.map((campsite, index) => (
+  function handleIconClick(camp) {
+    setSelectedCampSite(camp);
+  }
+
+  const campsite = campsites.map((camp, index) => (
     <Marker
       key={index}
       className={styles.marker}
-      longitude={campsite.lon}
-      latitude={campsite.lat}
+      longitude={camp.lon}
+      latitude={camp.lat}
     >
-      <div>🛌</div>
+      <p className={styles.markerButton} onClick={() => handleIconClick(camp)}>
+        <CampMarkerIcon />
+      </p>
     </Marker>
   ));
 
@@ -66,6 +80,17 @@ export default function map({
         onViewportChange={(viewport) => setViewport(viewport)}
       >
         <div>{campsite}</div>
+        {selectedCampSite && (
+          <Popup
+            latitude={selectedCampSite.lat}
+            longitude={selectedCampSite.lon}
+            onClose={() => setSelectedCampSite(null)}
+          >
+            <div>
+              <h2>{selectedCampSite.name}</h2>
+            </div>
+          </Popup>
+        )}
       </ReactMapGL>
     </div>
   );

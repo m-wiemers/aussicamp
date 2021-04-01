@@ -2,3 +2,8 @@
   display: grid;
   justify-content: center;
 }
+
+.markerButton {
+  background-color: transparent;
+  border-style: none;
+}
