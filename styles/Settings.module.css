@@ -11,6 +11,7 @@
 }
 
 .button {
+  margin-top: 2em;
   display: grid;
   justify-items: center;
 }

@@ -2,75 +2,87 @@ import { useEffect, useState } from "react";
 import SelectCity from "../components/citieSelect/SelectCity";
 import DateInput from "../components/DateInput/DateInput";
 import DayCounter from "../components/dayCounter/DayCounter";
-import MainButton from "../components/mainButton/MainButton";
+import MainButton from "../components/clickButton/ClickButton";
 import styles from "./../styles/Settings.module.css";
 import DayCount from "../utils/dayCount";
+import { useRouter } from "next/router";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function settings() {
-  const [selectStartCity, setSelectStartCity] = useState("");
-  const [selectLastCity, setSelectLastCity] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [lastDate, setLastDate] = useState("");
-  const [days, setDays] = useState(null);
+  const router = useRouter();
+  const [days, setDays] = useState<number>(null);
+  const [startDate, setStartDate] = useLocalStorage<string>("StartDate", "");
+  const [lastDate, setLastDate] = useLocalStorage<string>("LastDate", "");
+  const [startCity, setStartCity] = useLocalStorage<string>(
+    "StartCity",
+    "Sydney"
+  );
+  const [lastCity, setLastCity] = useLocalStorage<string>("LastCity", "Sydney");
+  const [locations, setLocations] = useLocalStorage<string[]>("locations", []);
 
   useEffect(() => {
     const days = DayCount(startDate, lastDate);
-    setDays(days);
+    setDays(Math.round(days));
   }, [startDate, lastDate]);
-
-  useEffect(() => {
-    const preStartValue = localStorage.getItem("StartCity");
-    if (!preStartValue) {
-      localStorage.setItem("StartCity", "Sydney");
-    }
-    setSelectStartCity(preStartValue);
-    const preStartDate = localStorage.getItem("StartDate");
-    setStartDate(preStartDate);
-    const preLastCity = localStorage.getItem("LastCity");
-    if (!preLastCity) {
-      localStorage.setItem("LastCity", "Sydney");
-    }
-    setSelectLastCity(preLastCity);
-    const preLastDate = localStorage.getItem("LastDate");
-    setLastDate(preLastDate);
-  }, []);
 
   function handleStartLocationChange(event) {
     const startLocation = event.target.value;
-    localStorage.setItem("StartCity", startLocation);
-    setSelectStartCity(startLocation);
-    if (!JSON.parse(localStorage.getItem("locations"))) {
-      return;
-    } else {
-      const firstLocation = JSON.parse(localStorage.getItem("locations"));
-      firstLocation.splice(0, 1, startLocation);
-      localStorage.setItem("locations", JSON.stringify(firstLocation));
-    }
+    setStartCity(startLocation);
   }
 
   function handleLastLocationChange(event) {
     const lastLocation = event.target.value;
-    localStorage.setItem("LastCity", lastLocation);
-    setSelectLastCity(lastLocation);
-    if (!JSON.parse(localStorage.getItem("locations"))) {
-      return;
-    } else {
-      const preLastLocation = JSON.parse(localStorage.getItem("locations"));
-      preLastLocation.splice(-1, 1, lastLocation);
-      localStorage.setItem("locations", JSON.stringify(preLastLocation));
-    }
+    setLastCity(lastLocation);
   }
 
   function handleStartDateChange(event) {
     const startDate = event.target.value;
-    localStorage.setItem("StartDate", startDate);
     setStartDate(startDate);
   }
 
   function handleLastDateChange(event) {
     const lastDate = event.target.value;
-    localStorage.setItem("LastDate", lastDate);
     setLastDate(lastDate);
+  }
+
+  async function handleButtonClick() {
+    function addCitysToArray(arr: string[]) {
+      arr[0] = startCity;
+      arr.push(lastCity);
+      return arr;
+    }
+
+    if (days < 1) {
+      alert("The end date must be after the start date!");
+      return;
+    }
+    if (days === undefined) {
+      alert("Please select start- and end Date first!");
+      return;
+    }
+
+    const arr = new Array(days - 1).fill("no City");
+    const array = addCitysToArray(arr);
+    setLocations(array);
+
+    if (locations.length < days) {
+      const daysPlusDays = locations.length + days;
+      const arr = Array(daysPlusDays - locations.length - 1).fill("no City");
+      const array = addCitysToArray(arr);
+      setLocations(array);
+    }
+    if (locations.length > days) {
+      if (
+        confirm(
+          "Your original plan was longer. We are creating a new plan now. Your old plan will be deleted!"
+        )
+      ) {
+        const arr = Array(days - 1).fill("no City");
+        const array = addCitysToArray(arr);
+        setLocations(array);
+      }
+    }
+    router.push("/plan");
   }
 
   const bigCities = [
@@ -91,13 +103,13 @@ export default function settings() {
       <main className={styles.main}>
         <SelectCity
           label={"Start location"}
-          selected={selectStartCity}
+          selected={startCity}
           value={bigCities}
           onSelect={handleStartLocationChange}
         />
         <SelectCity
           label={"End location"}
-          selected={selectLastCity}
+          selected={lastCity}
           value={bigCities}
           onSelect={handleLastLocationChange}
         />
@@ -111,16 +123,12 @@ export default function settings() {
           value={lastDate}
           onDateSelect={handleLastDateChange}
         />
-        <DayCounter label="Your plan has" days={days} secondLabel="days" />
+        {days && !isNaN(days) && (
+          <DayCounter label="Your plan has" days={days} secondLabel="days" />
+        )}
       </main>
       <div className={styles.button}>
-        <MainButton
-          days={days}
-          label={"continue"}
-          startCity={selectStartCity}
-          endCity={selectLastCity}
-          link="/plan"
-        />
+        <MainButton onClick={handleButtonClick} label={"continue"} />
       </div>
     </>
   );

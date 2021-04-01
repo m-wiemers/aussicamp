@@ -12,6 +12,6 @@ const Template: Story<DayCounterProps> = (args) => <DayCounter {...args} />;
 export const DayCount = Template.bind({});
 DayCount.args = {
   label: "Your Plan has",
-  days: 14,
+  days: 13,
   secondLabel: "days",
 };

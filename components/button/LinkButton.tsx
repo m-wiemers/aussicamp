@@ -1,13 +1,13 @@
 import ArrowRightIcon from "../icons/ArrowRightIcon";
-import styles from "./Button.module.css";
+import styles from "./LinkButton.module.css";
 import Link from "next/link";
 
-export type ButtonProps = {
+export type LinkButtonProps = {
   label: string;
   link: string;
 };
 
-function Button({ label, link }: ButtonProps) {
+function LinkButton({ label, link }: LinkButtonProps) {
   return (
     <Link href={link}>
       <div className={styles.btn}>
@@ -20,4 +20,4 @@ function Button({ label, link }: ButtonProps) {
   );
 }
 
-export default Button;
+export default LinkButton;
