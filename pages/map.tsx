@@ -42,12 +42,6 @@ export default function map({
 
   useEffect(() => {
     getCampSites().then(setCampsites);
-    const listener = (e) => {
-      if (e.key === "Escape") {
-        setSelectedCampSite(null);
-      }
-    };
-    window.addEventListener("keydown", listener);
   }, []);
 
   if (!campsites) {
@@ -58,7 +52,7 @@ export default function map({
     setSelectedCampSite(camp);
   }
 
-  const campsite = campsites.map((camp, index) => (
+  const campsiteMarker = campsites.map((camp, index) => (
     <Marker
       key={index}
       className={styles.marker}
@@ -79,7 +73,7 @@ export default function map({
         mapStyle={mapStyle}
         onViewportChange={(viewport) => setViewport(viewport)}
       >
-        <div>{campsite}</div>
+        <div>{campsiteMarker}</div>
         {selectedCampSite && (
           <Popup
             latitude={selectedCampSite.lat}
