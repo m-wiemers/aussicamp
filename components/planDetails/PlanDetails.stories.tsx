@@ -12,7 +12,8 @@ const Template: Story<PlanDetailProps> = (args) => <PlanDetails {...args} />;
 export const Plan = Template.bind({});
 Plan.args = {
   label: 1,
-  link: "#",
+  linkToCity: "#",
+  linkToDay: "#",
   cityName: "Brisbane",
   places: 3,
 };
