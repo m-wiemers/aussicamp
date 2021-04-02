@@ -1,0 +1,56 @@
+.container {
+  padding: 0;
+  border-radius: 20px;
+  color: var(--main-text-color);
+  background-color: var(--secondary-color);
+  width: fit-content;
+  display: grid;
+  grid-template-areas:
+    "city trashIcon"
+    "image image"
+    "campSite locationIcon";
+  align-items: center;
+}
+
+.city,
+.campSite {
+  margin: 0;
+  padding: 1em;
+}
+
+.locationIcon,
+.trashIcon {
+  fill: var(--menu-button-color);
+  height: 1.5em;
+  justify-self: end;
+  padding-right: 1em;
+}
+
+.city {
+  font-weight: 700;
+  grid-area: city;
+}
+
+.trashIcon {
+  grid-area: trashIcon;
+}
+
+.btn {
+  padding: 0.5em 0;
+  background-color: transparent;
+  border-style: none;
+  justify-self: end;
+}
+
+.image {
+  grid-area: image;
+}
+
+.campSite {
+  font-style: italic;
+  grid-area: campSite;
+}
+
+.locationIcon {
+  grid-area: locationIcon;
+}
