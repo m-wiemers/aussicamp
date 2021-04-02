@@ -76,13 +76,14 @@ export default function map({
         <div>{campsiteMarker}</div>
         {selectedCampSite && (
           <Popup
+            className={styles.popup}
             latitude={selectedCampSite.lat}
             longitude={selectedCampSite.lon}
             onClose={() => setSelectedCampSite(null)}
           >
             <div>
-              <h2>{selectedCampSite.name}</h2>
-              <p>{selectedCampSite.rate}</p>
+              <h2 className={styles.popupCampname}>{selectedCampSite.name}</h2>
+              <p className={styles.popupRate}>Rate: {selectedCampSite.rate}</p>
             </div>
           </Popup>
         )}
