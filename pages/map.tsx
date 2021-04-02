@@ -21,8 +21,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&=startCity=${startCity}`
   );
   const startCoordinates: coordinates = await res.json();
-  const latitude = startCoordinates.lat ?? -23.863032020795533;
-  const longitude = startCoordinates.lon ?? 135.22795478617115;
+  const latitude = startCoordinates.lat ?? -33.865143;
+  const longitude = startCoordinates.lon ?? 151.2099;
   return { props: { latitude, longitude } };
 };
 

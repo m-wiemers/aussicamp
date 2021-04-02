@@ -21,10 +21,10 @@ function Footer({ activeSite }: FooterProps) {
           <ListIcon />
         </div>
       </Link>
-      <Link href="/calendar">
+      <Link href="/day1">
         <div
           className={`${styles.button} ${
-            activeSite === "/calendar" ? styles.buttonActive : ""
+            activeSite === "/day1" ? styles.buttonActive : ""
           }`}
         >
           <CalenderIcon />
