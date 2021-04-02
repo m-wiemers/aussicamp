@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-// import { APICity, convertToCity } from "../../../utils/api";
 
 const apiKey = process.env.OTM_API_KEY;
 

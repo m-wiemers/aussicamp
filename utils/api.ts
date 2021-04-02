@@ -14,6 +14,13 @@ export type City = {
   lat: number;
 };
 
+export type Campsite = {
+  name: string;
+  lon: number;
+  lat: number;
+  rate: number;
+};
+
 async function fetchURL<T>(url: string): Promise<T> {
   const response = await fetch(url);
   return await response.json();
@@ -25,4 +32,12 @@ export async function getCity(): Promise<City> {
 
 export async function getCityByName(name: string): Promise<City> {
   return await fetchURL<City>(`/api/opentripmap/${name}`);
+}
+
+export async function getCampSite(campsite: string): Promise<Campsite> {
+  return await fetchURL<Campsite>(`/api/opentripmap/campsites/${campsite}`);
+}
+
+export async function getCampSites(): Promise<Campsite[]> {
+  return await fetchURL<Campsite[]>("/api/opentripmap/campsites");
 }

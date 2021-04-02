@@ -1,7 +1,7 @@
 .container {
   background-color: var(--input-bg-color);
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 95% 5%;
   align-items: center;
   border-radius: 20px;
   padding: 0.5em;
@@ -17,7 +17,7 @@
 
 .loupe {
   grid-column: 2;
-  width: 50%;
+  max-width: 100%;
   fill: var(--secondary-bg-color);
   padding: 0;
 }
