@@ -20,7 +20,8 @@ export default function Plan() {
       <PlanDetails
         label={index + 1}
         cityName={city}
-        link={"day".concat(index.toString())}
+        linkToDay={`day${index + 1}`}
+        linkToCity={`/map?startCity=${city}`}
         places={0}
       />
     </li>
