@@ -4,6 +4,9 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import styles from "../styles/Map.module.css";
 import { Campsite, getCampSites } from "../utils/api";
 import CampMarkerIcon from "../components/icons/CampMarkerIcon";
+import PopupSelect from "../components/popupselect/PopupSelect";
+import { useRouter } from "next/router";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const apiKey = process.env.OTM_API_KEY;
@@ -30,6 +33,13 @@ export default function map({
   latitude,
   longitude,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
+  const [keyForLs, setKeyForLs] = useState<string>(null);
+  const [favoriteCampSite, setFavoriteCampSite] = useLocalStorage(
+    keyForLs,
+    null
+  );
+  const [storedDays, setStoredDays] = useState<string[]>(null);
   const [campsites, setCampsites] = useState<Campsite[]>([]);
   const [selectedCampSite, setSelectedCampSite] = useState(null);
   const [viewport, setViewport] = useState({
@@ -44,12 +54,33 @@ export default function map({
     getCampSites().then(setCampsites);
   }, []);
 
+  useEffect(() => {
+    const daysInLs = JSON.parse(localStorage.getItem("locations"));
+    if (!daysInLs) {
+      alert("Sorry! There are no days at you plan!");
+      router.push;
+    }
+    setStoredDays(daysInLs);
+  }, []);
+
   if (!campsites) {
     return <div>Loading...</div>;
   }
 
   function handleIconClick(camp) {
     setSelectedCampSite(camp);
+  }
+
+  function handleDaySelect(e) {
+    const selectedDay = e.target.value;
+    const numberOfDay = selectedDay.match(/\d/g).join("");
+    const adressToDay = "day" + numberOfDay;
+    setKeyForLs(adressToDay);
+  }
+
+  function handleAddButton(event) {
+    event.preventDefault();
+    setFavoriteCampSite(selectedCampSite);
   }
 
   const campsiteMarker = campsites.map((camp, index) => (
@@ -80,11 +111,18 @@ export default function map({
             latitude={selectedCampSite.lat}
             longitude={selectedCampSite.lon}
             onClose={() => setSelectedCampSite(null)}
+            closeOnClick={false}
           >
             <div>
               <h2 className={styles.popupCampname}>{selectedCampSite.name}</h2>
               <p className={styles.popupRate}>Rate: {selectedCampSite.rate}</p>
             </div>
+            <PopupSelect
+              onChange={handleDaySelect}
+              label="Add this Campsite to day: "
+              days={storedDays}
+              handleSubmit={handleAddButton}
+            />
           </Popup>
         )}
       </ReactMapGL>
