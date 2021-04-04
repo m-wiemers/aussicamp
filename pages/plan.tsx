@@ -1,17 +1,19 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PlanDetails from "../components/planDetails/PlanDetails";
 import styles from "../styles/Plan.module.css";
 
 export default function Plan() {
-  const [cities, setDays] = useState([]);
+  const router = useRouter();
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     const daysOfLS = localStorage.getItem("locations");
     if (daysOfLS === null) {
       window.alert("no days at your plan!");
-      window.history.back();
+      router.back();
     } else {
-      setDays(JSON.parse(daysOfLS));
+      setCities(JSON.parse(daysOfLS));
     }
   }, []);
 
