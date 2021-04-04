@@ -15,7 +15,7 @@ export default function Plan() {
     }
   }, []);
 
-  const city = cities.map((city, index) => (
+  const cityDetails = cities.map((city: string, index: number) => (
     <li key={index} className={styles.list}>
       <PlanDetails
         label={index + 1}
@@ -30,7 +30,7 @@ export default function Plan() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <ul className={styles.section}>{city}</ul>
+        <ul className={styles.section}>{cityDetails}</ul>
       </main>
     </div>
   );
