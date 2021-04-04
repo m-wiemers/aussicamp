@@ -14,6 +14,6 @@ Plan.args = {
   label: 1,
   linkToCity: "#",
   linkToDay: "#",
-  cityName: "Brisbane",
+  cityName: "No City",
   places: 3,
 };

@@ -28,6 +28,16 @@
   cursor: pointer;
 }
 
+.input {
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  max-width: 90%;
+  border-style: none;
+  padding: 0.5em;
+  margin: 0.5em;
+  border-radius: 10px;
+}
+
 .places {
   grid-row: 2;
   margin: 0.5em;
