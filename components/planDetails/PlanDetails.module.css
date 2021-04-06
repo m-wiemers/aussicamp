@@ -25,6 +25,7 @@
 .city {
   grid-row: 1;
   margin: 0.5em;
+  cursor: pointer;
 }
 
 .places {
@@ -37,6 +38,7 @@
   grid-column: 2;
   grid-row: 1 / 3;
   fill: var(--menu-button-color);
+  cursor: pointer;
 }
 
 .DragIcon {

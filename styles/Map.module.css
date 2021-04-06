@@ -6,4 +6,19 @@
 .markerButton {
   background-color: transparent;
   border-style: none;
+  cursor: pointer;
+}
+
+.popup {
+  max-width: 80vw;
+}
+
+.popupCampname {
+  text-align: center;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+.popupRate {
+  text-align: center;
 }

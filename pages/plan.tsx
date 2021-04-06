@@ -1,26 +1,29 @@
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import PlanDetails from "../components/planDetails/PlanDetails";
+import useLocalStorage from "../hooks/useLocalStorage";
 import styles from "../styles/Plan.module.css";
 
 export default function Plan() {
-  const [cities, setDays] = useState([]);
+  const router = useRouter();
+  const [cities, setCities] = useLocalStorage("locations", []);
 
   useEffect(() => {
-    const daysOfLS = localStorage.getItem("locations");
-    if (daysOfLS === null) {
+    if (cities === null) {
       window.alert("no days at your plan!");
-      window.history.back();
+      router.back();
     } else {
-      setDays(JSON.parse(daysOfLS));
+      setCities(cities);
     }
   }, []);
 
-  const city = cities.map((city, index) => (
-    <li key={index} className={styles.list}>
+  const cityDetails = cities.map((city) => (
+    <li key={city.id} className={styles.list}>
       <PlanDetails
-        label={index + 1}
-        cityName={city}
-        link={"day".concat(index.toString())}
+        label={city.id}
+        cityName={city.label}
+        linkToDay={`day${city.id}`}
+        linkToCity={`/map?startCity=${city.label}`}
         places={0}
       />
     </li>
@@ -29,7 +32,7 @@ export default function Plan() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <ul className={styles.section}>{city}</ul>
+        <ul className={styles.section}>{cityDetails}</ul>
       </main>
     </div>
   );

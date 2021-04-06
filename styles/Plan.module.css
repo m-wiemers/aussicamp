@@ -1,4 +1,5 @@
 .container {
+  margin-top: 1em;
   background-color: var(--main-bg-color);
 }
 

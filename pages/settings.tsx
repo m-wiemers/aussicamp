@@ -7,6 +7,7 @@ import styles from "./../styles/Settings.module.css";
 import DayCount from "../utils/dayCount";
 import { useRouter } from "next/router";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { Day } from "../utils/types";
 
 export default function settings() {
   const router = useRouter();
@@ -18,11 +19,15 @@ export default function settings() {
     "Sydney"
   );
   const [lastCity, setLastCity] = useLocalStorage<string>("LastCity", "Sydney");
-  const [locations, setLocations] = useLocalStorage<string[]>("locations", []);
+  const [locations, setLocations] = useLocalStorage<Day[]>("locations", []);
 
   useEffect(() => {
     const days = DayCount(startDate, lastDate);
-    setDays(Math.round(days));
+    if (!days) {
+      return;
+    } else {
+      setDays(Math.round(days));
+    }
   }, [startDate, lastDate]);
 
   function handleStartLocationChange(event) {
@@ -46,10 +51,10 @@ export default function settings() {
   }
 
   async function handleButtonClick() {
-    function addCitysToArray(arr: string[]) {
-      arr[0] = startCity;
-      arr.push(lastCity);
-      return arr;
+    function addCitysToArray(days: Day[]) {
+      days[0].label = startCity;
+      days[days.length - 1].label = lastCity;
+      return days;
     }
 
     if (days < 1) {
@@ -61,23 +66,29 @@ export default function settings() {
       return;
     }
 
-    const arr = new Array(days - 1).fill("no City");
-    const array = addCitysToArray(arr);
-    setLocations(array);
-
     if (locations.length < days) {
-      const daysPlusDays = locations.length + days;
-      const arr = Array(daysPlusDays - locations.length - 1).fill("no City");
+      const daysToAdded = days - locations.length;
+      const arr = [
+        ...locations,
+        ...Array(daysToAdded)
+          .fill({
+            label: "no City",
+            campSites: [],
+          })
+          .map((item, index) => ({
+            id: locations.length + index + 1,
+            ...item,
+          })),
+      ];
       const array = addCitysToArray(arr);
       setLocations(array);
-    }
-    if (locations.length > days) {
+    } else if (locations.length > days) {
       if (
         confirm(
           "Your original plan was longer. We are creating a new plan now. Your old plan will be deleted!"
         )
       ) {
-        const arr = Array(days - 1).fill("no City");
+        const arr = Array(days).fill({ label: "no City", campSites: [] });
         const array = addCitysToArray(arr);
         setLocations(array);
       }
