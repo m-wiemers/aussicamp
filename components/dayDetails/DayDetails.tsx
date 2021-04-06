@@ -9,7 +9,7 @@ export type DayDetailsProps = {
   campSiteName: string;
   image: string;
   linkToLocation: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onDeleteClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 function DayDetails({
@@ -17,19 +17,19 @@ function DayDetails({
   campSiteName,
   image,
   linkToLocation,
-  onClick,
+  onDeleteClick,
 }: DayDetailsProps) {
   return (
     <Link href={linkToLocation}>
-      <div className={styles.container}>
+      <li className={styles.container}>
         <p className={styles.city}>{cityName}</p>
-        <button className={styles.btn} onClick={onClick}>
+        <button className={styles.btn} onClick={onDeleteClick}>
           <TrashIcon />
         </button>
         <img className={styles.image} src={image} alt="CampsitePic" />
         <p className={styles.campSite}>{campSiteName}</p>
         <LocationIcon />
-      </div>
+      </li>
     </Link>
   );
 }

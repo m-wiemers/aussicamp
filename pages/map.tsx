@@ -22,7 +22,7 @@ type coordinates = {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { startCity } = context.query;
   const res = await fetch(
-    `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&=startCity=${startCity}`
+    `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&startCity=${startCity}`
   );
   const startCoordinates: coordinates = await res.json();
   const latitude = startCoordinates.lat ?? -33.865143;

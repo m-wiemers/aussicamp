@@ -3,7 +3,6 @@
   border-radius: 20px;
   color: var(--main-text-color);
   background-color: var(--secondary-color);
-  width: fit-content;
   display: grid;
   grid-template-areas:
     "city trashIcon"
@@ -44,6 +43,7 @@
 
 .image {
   grid-area: image;
+  width: 100%;
 }
 
 .campSite {
