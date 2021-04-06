@@ -6,6 +6,8 @@ import { Campsite, getCampSites } from "../utils/api";
 import CampMarkerIcon from "../components/icons/CampMarkerIcon";
 import PopupSelect from "../components/popupselect/PopupSelect";
 import useLocalStorage from "../hooks/useLocalStorage";
+import { useRouter } from "next/router";
+import { Day } from "../utils/types";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const apiKey = process.env.OTM_API_KEY;
@@ -32,12 +34,9 @@ export default function map({
   latitude,
   longitude,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [keyForLs, setKeyForLs] = useState<string>("day1");
-  const [favoriteCampSites, setFavoriteCampSites] = useLocalStorage(
-    keyForLs,
-    []
-  );
-  const [storedDays, setStoredDays] = useState<string[]>(null);
+  const router = useRouter();
+  const [indexFromSelectedDay, setIndexFromSelectDay] = useState<number>(0);
+  const [storedDays, setStoredDays] = useLocalStorage<Day[]>("locations", []);
   const [campsites, setCampsites] = useState<Campsite[]>([]);
   const [selectedCampSite, setSelectedCampSite] = useState(null);
   const [viewport, setViewport] = useState({
@@ -49,12 +48,16 @@ export default function map({
   });
 
   useEffect(() => {
-    getCampSites().then(setCampsites);
-  }, []);
+    if (!storedDays) {
+      alert("Sorry, No Days at your plan");
+      router.push("/settings");
+    } else {
+      setStoredDays(storedDays);
+    }
+  });
 
   useEffect(() => {
-    const daysInLs = JSON.parse(localStorage.getItem("locations"));
-    setStoredDays(daysInLs);
+    getCampSites().then(setCampsites);
   }, []);
 
   if (!campsites) {
@@ -66,15 +69,14 @@ export default function map({
   }
 
   function handleDaySelect(e) {
-    const selectedDay = e.target.value;
-    const numberOfDay = selectedDay.match(/\d/g).join("");
-    const adressToDay = "day" + numberOfDay;
-    setKeyForLs(adressToDay);
+    const idFromSelect = e.target.value;
+    setIndexFromSelectDay(idFromSelect - 1);
   }
 
-  function handleAddButton(event) {
-    event.preventDefault();
-    setFavoriteCampSites([...favoriteCampSites, selectedCampSite.name]);
+  function handleAddButton(e) {
+    e.preventDefault();
+    storedDays[indexFromSelectedDay].campSites.push(selectedCampSite.name);
+    setStoredDays(storedDays);
   }
 
   const campsiteMarker = campsites.map((camp, index) => (
@@ -112,8 +114,9 @@ export default function map({
               <p className={styles.popupRate}>Rate: {selectedCampSite.rate}</p>
             </div>
             <PopupSelect
+              buttonLabel="Add Campsite"
               onChange={handleDaySelect}
-              label="Add this Campsite to day: "
+              label="Add this Campsite to"
               days={storedDays}
               handleSubmit={handleAddButton}
             />

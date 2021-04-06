@@ -1,9 +1,11 @@
 import { ChangeEventHandler, FormEventHandler } from "react";
 import styles from "./PopupSelect.module.css";
+import { Day } from "../../utils/types";
 
 export type PopupSelectProps = {
-  days: string[];
+  days: Day[];
   label: string;
+  buttonLabel: string;
   handleSubmit: FormEventHandler<HTMLFormElement>;
   onChange: ChangeEventHandler<HTMLSelectElement>;
 };
@@ -13,9 +15,12 @@ function PopupSelect({
   label,
   handleSubmit,
   onChange,
+  buttonLabel,
 }: PopupSelectProps) {
-  const daySelect = days.map((day, index) => (
-    <option key={index}>{`Day ${index + 1} - ${day}` || index + 1}</option>
+  const daySelect = days.map((day) => (
+    <option value={day.id} key={day.id}>
+      {`Day ${day.id} - ${day.label}` || day.id}
+    </option>
   ));
 
   return (
@@ -25,7 +30,7 @@ function PopupSelect({
         {daySelect}
       </select>
       <button className={styles.btn} type="submit">
-        Add
+        {buttonLabel}
       </button>
     </form>
   );

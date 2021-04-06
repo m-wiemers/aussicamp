@@ -11,6 +11,23 @@ const Template: Story<PopupSelectProps> = (args) => <PopupSelect {...args} />;
 
 export const filled = Template.bind({});
 filled.args = {
-  days: ["Brisbane", "noCity", "noCity", "noCity", "Sydney"],
   label: "Add this camp to your Day",
+  buttonLabel: "Add Campsite",
+  days: [
+    {
+      id: 1,
+      label: "Brisbane",
+      campSites: [],
+    },
+    {
+      id: 1,
+      label: "Sydney",
+      campSites: [],
+    },
+    {
+      id: 1,
+      label: "no City",
+      campSites: [],
+    },
+  ],
 };
