@@ -88,7 +88,12 @@ export default function settings() {
           "Your original plan was longer. We are creating a new plan now. Your old plan will be deleted!"
         )
       ) {
-        const arr = Array(days).fill({ label: "no City", campSites: [] });
+        const arr = Array(days)
+          .fill({ label: "no City", campSites: [] })
+          .map((item, index) => ({
+            id: index + 1,
+            ...item,
+          }));
         const array = addCitysToArray(arr);
         setLocations(array);
       }
