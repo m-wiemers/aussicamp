@@ -54,7 +54,7 @@ export default function map({
     } else {
       setStoredDays(storedDays);
     }
-  });
+  }, []);
 
   useEffect(() => {
     getCampSites().then(setCampsites);

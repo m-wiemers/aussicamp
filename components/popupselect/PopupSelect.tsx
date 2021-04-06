@@ -25,7 +25,7 @@ function PopupSelect({
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label className={styles.label}>{label}</label>
+      <div className={styles.label}>{label}</div>
       <select onChange={onChange} className={styles.select}>
         {daySelect}
       </select>
