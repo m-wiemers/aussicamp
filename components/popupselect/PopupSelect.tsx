@@ -14,7 +14,7 @@ function PopupSelect({
   handleSubmit,
   onChange,
 }: PopupSelectProps) {
-  const daySelect = days.map((day, index, onChange) => (
+  const daySelect = days.map((day, index) => (
     <option key={index}>{`Day ${index + 1} - ${day}` || index + 1}</option>
   ));
 

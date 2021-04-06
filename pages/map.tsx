@@ -5,7 +5,6 @@ import styles from "../styles/Map.module.css";
 import { Campsite, getCampSites } from "../utils/api";
 import CampMarkerIcon from "../components/icons/CampMarkerIcon";
 import PopupSelect from "../components/popupselect/PopupSelect";
-import { useRouter } from "next/router";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -33,11 +32,10 @@ export default function map({
   latitude,
   longitude,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const router = useRouter();
-  const [keyForLs, setKeyForLs] = useState<string>(null);
-  const [favoriteCampSite, setFavoriteCampSite] = useLocalStorage(
+  const [keyForLs, setKeyForLs] = useState<string>("day1");
+  const [favoriteCampSites, setFavoriteCampSites] = useLocalStorage(
     keyForLs,
-    null
+    []
   );
   const [storedDays, setStoredDays] = useState<string[]>(null);
   const [campsites, setCampsites] = useState<Campsite[]>([]);
@@ -56,10 +54,6 @@ export default function map({
 
   useEffect(() => {
     const daysInLs = JSON.parse(localStorage.getItem("locations"));
-    if (!daysInLs) {
-      alert("Sorry! There are no days at you plan!");
-      router.push;
-    }
     setStoredDays(daysInLs);
   }, []);
 
@@ -80,7 +74,7 @@ export default function map({
 
   function handleAddButton(event) {
     event.preventDefault();
-    setFavoriteCampSite(selectedCampSite);
+    setFavoriteCampSites([...favoriteCampSites, selectedCampSite.name]);
   }
 
   const campsiteMarker = campsites.map((camp, index) => (
