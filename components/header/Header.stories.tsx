@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react/types-6-0";
+import { Story } from "@storybook/react/";
 import React from "react";
 import Header from "./Header";
 
