@@ -8,6 +8,7 @@ import PopupSelect from "../components/popupselect/PopupSelect";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useRouter } from "next/router";
 import { Day } from "../utils/types";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const apiKey = process.env.OTM_API_KEY;

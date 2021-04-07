@@ -9,6 +9,8 @@
     "image image"
     "campSite locationIcon";
   align-items: center;
+  box-shadow: 2px 2px 3px black;
+  cursor: pointer;
 }
 
 .city,
@@ -39,6 +41,7 @@
   background-color: transparent;
   border-style: none;
   justify-self: end;
+  cursor: pointer;
 }
 
 .image {
