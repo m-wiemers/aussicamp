@@ -12,7 +12,7 @@ export default function Days() {
 
   useEffect(() => {
     if (!days) {
-      alert("No campsites for this day found...");
+      alert("No days at your plan");
       router.push("/map");
     } else {
       setDays(days);
@@ -24,8 +24,10 @@ export default function Days() {
     console.log("button clicked");
   }
 
-  const campsites = days[thisId - 1].campSites;
-  const cityName = days[thisId - 1].label;
+  const campsites = days[thisId - 1]?.campSites
+    ? days[thisId - 1].campSites
+    : [];
+  const cityName = days[thisId - 1]?.label ? days[thisId - 1].label : "No City";
   const campsiteDetails = campsites.map((camp, index) => {
     return (
       <DayDetails
