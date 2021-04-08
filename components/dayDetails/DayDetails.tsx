@@ -7,6 +7,7 @@ import styles from "./DayDetails.module.css";
 export type DayDetailsProps = {
   cityName: string;
   campSiteName: string;
+  linkToCity: string;
   image: string;
   linkToLocation: string;
   onDeleteClick: MouseEventHandler<HTMLButtonElement>;
@@ -17,20 +18,27 @@ function DayDetails({
   campSiteName,
   image,
   linkToLocation,
+  linkToCity,
   onDeleteClick,
 }: DayDetailsProps) {
   return (
-    <Link href={linkToLocation}>
+    <>
       <li className={styles.container}>
-        <p className={styles.city}>{cityName}</p>
+        <Link href={linkToCity}>
+          <p className={styles.city}>{cityName}</p>
+        </Link>
         <button className={styles.btn} onClick={onDeleteClick}>
           <TrashIcon />
         </button>
         <img className={styles.image} src={image} alt="CampsitePic" />
         <p className={styles.campSite}>{campSiteName}</p>
-        <LocationIcon />
+        <Link href={linkToLocation}>
+          <>
+            <LocationIcon />
+          </>
+        </Link>
       </li>
-    </Link>
+    </>
   );
 }
 

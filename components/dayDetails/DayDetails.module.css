@@ -10,7 +10,6 @@
     "campSite locationIcon";
   align-items: center;
   box-shadow: 2px 2px 3px black;
-  cursor: pointer;
 }
 
 .city,
@@ -25,11 +24,13 @@
   height: 1.5em;
   justify-self: end;
   padding-right: 1em;
+  cursor: pointer;
 }
 
 .city {
   font-weight: 700;
   grid-area: city;
+  cursor: pointer;
 }
 
 .trashIcon {

@@ -15,4 +15,5 @@ DayDetail.args = {
   campSiteName: "Big 4 CampSite",
   image: "/placeholderpic.jpg",
   linkToLocation: "#",
+  linkToCity: "#",
 };
