@@ -8,6 +8,7 @@ import PopupSelect from "../components/popupselect/PopupSelect";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useRouter } from "next/router";
 import { Day } from "../utils/types";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const apiToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 const apiKey = process.env.OTM_API_KEY;
@@ -22,7 +23,7 @@ type coordinates = {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { startCity } = context.query;
   const res = await fetch(
-    `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&=startCity=${startCity}`
+    `https://api.opentripmap.com/0.1/en/places/geoname?name=${startCity}&country=au&apikey=${apiKey}&startCity=${startCity}`
   );
   const startCoordinates: coordinates = await res.json();
   const latitude = startCoordinates.lat ?? -33.865143;

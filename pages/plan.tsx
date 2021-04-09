@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import PlanDetails from "../components/planDetails/PlanDetails";
 import useLocalStorage from "../hooks/useLocalStorage";
 import styles from "../styles/Plan.module.css";
+import { Day } from "../utils/types";
 
 export default function Plan() {
   const router = useRouter();
-  const [cities, setCities] = useLocalStorage("locations", []);
+  const [cities, setCities] = useLocalStorage<Day[]>("locations", []);
 
   useEffect(() => {
     if (cities === null) {
@@ -24,7 +25,7 @@ export default function Plan() {
         cityName={city.label}
         linkToDay={`day${city.id}`}
         linkToCity={`/map?startCity=${city.label}`}
-        places={0}
+        places={city.campSites.length}
       />
     </li>
   ));

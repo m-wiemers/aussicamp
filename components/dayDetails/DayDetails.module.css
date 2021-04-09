@@ -3,13 +3,14 @@
   border-radius: 20px;
   color: var(--main-text-color);
   background-color: var(--secondary-color);
-  width: fit-content;
   display: grid;
   grid-template-areas:
     "city trashIcon"
     "image image"
     "campSite locationIcon";
   align-items: center;
+  box-shadow: 2px 2px 3px black;
+  max-width: 370px;
 }
 
 .city,
@@ -24,11 +25,13 @@
   height: 1.5em;
   justify-self: end;
   padding-right: 1em;
+  cursor: pointer;
 }
 
 .city {
   font-weight: 700;
   grid-area: city;
+  cursor: pointer;
 }
 
 .trashIcon {
@@ -40,10 +43,12 @@
   background-color: transparent;
   border-style: none;
   justify-self: end;
+  cursor: pointer;
 }
 
 .image {
   grid-area: image;
+  width: 100%;
 }
 
 .campSite {
