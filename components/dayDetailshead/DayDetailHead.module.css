@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: 25px 1fr 25px;
+  text-align: center;
+  align-items: center;
+}
+
+.preBtn {
+  cursor: pointer;
+}
+
+.city {
+  padding: 0;
+  margin: 0;
+}
+
+.nextBtn {
+  cursor: pointer;
+}
