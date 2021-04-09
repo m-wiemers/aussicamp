@@ -14,7 +14,7 @@
 .component {
   grid-column: 1 / 4;
   display: grid;
-  grid-template: 50% 50% / 70% 15% 15%;
+  grid-template: 50% 50% / auto 1fr 15% 15%;
   align-items: center;
   background-color: var(--secondary-color);
   margin: 0.2em 0;
@@ -26,6 +26,18 @@
   grid-row: 1;
   margin: 0.5em;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.penBtn {
+  background-color: transparent;
+  border-style: none;
+  fill: var(--menu-button-color);
+  padding: 0;
+  margin: 0;
+  width: 2em;
+  cursor: pointer;
 }
 
 .places {
@@ -35,7 +47,7 @@
 
 .editIcon {
   justify-self: center;
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1 / 3;
   fill: var(--menu-button-color);
   cursor: pointer;
@@ -43,7 +55,27 @@
 
 .DragIcon {
   justify-self: center;
-  grid-column: 3;
+  grid-column: 4;
   grid-row: 1 / 3;
   fill: var(--menu-button-color);
+}
+
+.cityForm {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.input {
+  background-color: var(--input-bg-color);
+  border: none;
+  border-radius: 10px 0 0 10px;
+  padding: 0.5em;
+  margin: 0.5em 0;
+}
+
+.btn {
+  background-color: var(--button-bg-color);
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 0.5em;
 }

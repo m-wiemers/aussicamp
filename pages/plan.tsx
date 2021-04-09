@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PlanDetails from "../components/planDetails/PlanDetails";
 import useLocalStorage from "../hooks/useLocalStorage";
 import styles from "../styles/Plan.module.css";
@@ -8,6 +8,7 @@ import { Day } from "../utils/types";
 export default function Plan() {
   const router = useRouter();
   const [cities, setCities] = useLocalStorage<Day[]>("locations", []);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     if (cities === null) {
@@ -16,7 +17,17 @@ export default function Plan() {
     } else {
       setCities(cities);
     }
-  }, []);
+  }, [cities]);
+
+  function handleCityChange(preCityName, id) {
+    const newCities = [...cities];
+    const newCity = {
+      ...newCities[id],
+      label: preCityName.replace(preCityName, inputValue),
+    };
+    newCities.splice(id, 1, newCity);
+    setCities(newCities);
+  }
 
   const cityDetails = cities.map((city) => (
     <li key={city.id} className={styles.list}>
@@ -26,6 +37,9 @@ export default function Plan() {
         linkToDay={`day${city.id}`}
         linkToCity={`/map?startCity=${city.label}`}
         places={city.campSites.length}
+        handleChange={() => handleCityChange(city.label, city.id - 1)}
+        inputChange={(e) => setInputValue(e.target.value)}
+        placeHolder={city.label}
       />
     </li>
   ));
