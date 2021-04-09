@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 25px 1fr 25px;
+  grid-template-columns: 25px auto 25px;
   text-align: center;
   align-items: center;
 }
@@ -10,7 +10,8 @@
 }
 
 .city {
-  padding: 0;
+  color: var(--secondary-color);
+  padding: 0 4em;
   margin: 0;
 }
 

@@ -11,11 +11,11 @@ function DayDetailHead({ cityName, nextPage, prePage }: DayDetailHeadProps) {
   return (
     <div className={styles.container}>
       <Link href={prePage}>
-        <img className={styles.preBtn} src="./previous.svg" alt="prev Page" />
+        <img className={styles.preBtn} src="/previous.svg" alt="prev Page" />
       </Link>
-      <p className={styles.city}>{cityName}</p>
+      <h3 className={styles.city}>{cityName}</h3>
       <Link href={nextPage}>
-        <img className={styles.nextBtn} src="./next.svg" alt="next Page" />
+        <img className={styles.nextBtn} src="/next.svg" alt="next Page" />
       </Link>
     </div>
   );

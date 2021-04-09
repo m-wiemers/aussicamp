@@ -2,16 +2,16 @@
   margin-top: 1.8em;
 }
 
-.headline {
-  text-align: center;
-  color: var(--secondary-text-color);
+.header {
+  display: grid;
+  justify-content: center;
 }
 
 .list {
+  min-width: 320px;
   display: grid;
   justify-content: center;
   row-gap: 1em;
-  min-width: 320px;
   list-style: none;
   padding: 0;
 }
