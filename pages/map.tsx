@@ -40,6 +40,7 @@ export default function map({
   const [storedDays, setStoredDays] = useLocalStorage<Day[]>("locations", []);
   const [campsites, setCampsites] = useState<Campsite[]>([]);
   const [selectedCampSite, setSelectedCampSite] = useState(null);
+  const [add, setAdd] = useState("Add Campsite");
   const [viewport, setViewport] = useState({
     latitude: latitude,
     longitude: longitude,
@@ -78,6 +79,8 @@ export default function map({
     e.preventDefault();
     storedDays[indexFromSelectedDay].campSites.push(selectedCampSite.name);
     setStoredDays(storedDays);
+    setAdd("added!");
+    setTimeout(() => setAdd("Add Campsite"), 1500);
   }
 
   const campsiteMarker = campsites.map((camp, index) => (
@@ -115,7 +118,7 @@ export default function map({
               <p className={styles.popupRate}>Rate: {selectedCampSite.rate}</p>
             </div>
             <PopupSelect
-              buttonLabel="Add Campsite"
+              buttonLabel={add}
               onChange={handleDaySelect}
               label="Add this Campsite to"
               days={storedDays}

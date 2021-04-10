@@ -52,7 +52,7 @@ function PlanDetails({
               onChange={inputChange}
             />
             <button className={styles.btn} onClick={handleCityChange}>
-              change
+              add
             </button>
           </div>
         ) : (
