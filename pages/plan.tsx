@@ -39,7 +39,7 @@ export default function Plan() {
         places={city.campSites.length}
         handleChange={() => handleCityChange(city.label, city.id - 1)}
         inputChange={(e) => setInputValue(e.target.value)}
-        placeHolder={city.label}
+        defaultValue={city.label}
       />
     </li>
   ));

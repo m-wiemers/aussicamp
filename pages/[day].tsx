@@ -47,14 +47,14 @@ export default function Days() {
     <div className={styles.container}>
       <header className={styles.header}>
         <DayDetailHead
-          cityName={cityName}
+          day={`Day ${thisId}`}
           nextPage={thisId < days.length ? `/day${thisId + 1}` : "day1"}
           prePage={thisId > 1 ? `day${thisId - 1}` : `day${days.length}`}
         />
       </header>
       <ul className={styles.list}>
         {campsites &&
-          campsites.map((camp, index) => {
+          campsites.map((camp: string) => {
             return (
               <DayDetails
                 cityName={cityName}
@@ -63,7 +63,7 @@ export default function Days() {
                 image={"/placeholderpic.jpg"}
                 linkToLocation={`/map?startCity=${cityName}`}
                 onDeleteClick={() => handleDelete(thisId - 1, camp)}
-                key={index}
+                key={camp}
               />
             );
           })}

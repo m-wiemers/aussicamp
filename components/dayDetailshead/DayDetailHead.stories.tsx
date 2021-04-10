@@ -13,7 +13,7 @@ const Template: Story<DayDetailHeadProps> = (args) => (
 
 export const DayHead = Template.bind({});
 DayHead.args = {
-  cityName: "Brisbane",
+  day: "Brisbane",
   nextPage: "#",
   prePage: "#",
 };
