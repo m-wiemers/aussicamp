@@ -12,7 +12,7 @@ const Template: Story<DayDetailsProps> = (args) => <DayDetails {...args} />;
 export const DayDetail = Template.bind({});
 DayDetail.args = {
   cityName: "Brisbane",
-  campSiteName: "Big 4 CampSite",
+  campSiteName: "big 4 campSite",
   image: "/placeholderpic.jpg",
   linkToLocation: "#",
   linkToCity: "#",
