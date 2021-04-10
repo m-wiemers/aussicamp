@@ -77,10 +77,16 @@ export default function map({
 
   function handleAddButton(e) {
     e.preventDefault();
-    storedDays[indexFromSelectedDay].campSites.push(selectedCampSite.name);
-    setStoredDays(storedDays);
-    setAdd("added!");
-    setTimeout(() => setAdd("Add Campsite"), 1500);
+    if (
+      storedDays[indexFromSelectedDay].campSites.includes(selectedCampSite.name)
+    ) {
+      alert("Campsite is already at your plan");
+    } else {
+      storedDays[indexFromSelectedDay].campSites.push(selectedCampSite.name);
+      setStoredDays(storedDays);
+      setAdd("added!");
+      setTimeout(() => setAdd("Add Campsite"), 1500);
+    }
   }
 
   const campsiteMarker = campsites.map((camp, index) => (
