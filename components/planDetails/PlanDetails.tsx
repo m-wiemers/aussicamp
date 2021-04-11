@@ -13,7 +13,7 @@ export type PlanDetailProps = {
   places: number;
   handleChange: MouseEventHandler<HTMLButtonElement>;
   inputChange: ChangeEventHandler<HTMLInputElement>;
-  placeHolder: string;
+  defaultValue: string;
 };
 
 function PlanDetails({
@@ -24,7 +24,7 @@ function PlanDetails({
   cityName,
   handleChange,
   inputChange,
-  placeHolder,
+  defaultValue,
 }: PlanDetailProps) {
   const [visible, setVisible] = useState(false);
   function handleCityChange(label) {
@@ -48,11 +48,11 @@ function PlanDetails({
             <input
               className={styles.input}
               type="text"
-              placeholder={placeHolder}
+              defaultValue={defaultValue}
               onChange={inputChange}
             />
             <button className={styles.btn} onClick={handleCityChange}>
-              change
+              add
             </button>
           </div>
         ) : (

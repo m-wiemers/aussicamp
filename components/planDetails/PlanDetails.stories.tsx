@@ -16,4 +16,5 @@ Plan.args = {
   linkToCity: "#",
   linkToDay: "#",
   places: 3,
+  defaultValue: "default",
 };

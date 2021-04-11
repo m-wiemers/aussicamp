@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import DayDetails from "../components/dayDetails/DayDetails";
+import DayDetailHead from "../components/dayDetailshead/DayDetailHead";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { Day } from "../utils/types";
 import styles from "./../styles/Day.module.css";
@@ -26,7 +27,7 @@ export default function Days() {
     } else {
       setCampsites([]);
     }
-  }, [days]);
+  }, [days, thisId]);
 
   function handleDelete(id, campName) {
     const newDays = [...days];
@@ -44,10 +45,16 @@ export default function Days() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.headline}>{`Day ${thisId}`}</h2>
+      <header className={styles.header}>
+        <DayDetailHead
+          day={`Day ${thisId}`}
+          nextPage={thisId < days.length ? `/day${thisId + 1}` : "day1"}
+          prePage={thisId > 1 ? `day${thisId - 1}` : `day${days.length}`}
+        />
+      </header>
       <ul className={styles.list}>
         {campsites &&
-          campsites.map((camp, index) => {
+          campsites.map((camp: string) => {
             return (
               <DayDetails
                 cityName={cityName}
@@ -56,7 +63,7 @@ export default function Days() {
                 image={"/placeholderpic.jpg"}
                 linkToLocation={`/map?startCity=${cityName}`}
                 onDeleteClick={() => handleDelete(thisId - 1, camp)}
-                key={index}
+                key={camp}
               />
             );
           })}

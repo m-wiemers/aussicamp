@@ -17,6 +17,7 @@
 .campSite {
   margin: 0;
   padding: 1em;
+  text-transform: capitalize;
 }
 
 .locationIcon,

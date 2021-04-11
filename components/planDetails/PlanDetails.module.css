@@ -20,6 +20,7 @@
   margin: 0.2em 0;
   padding: 0.5em;
   border-radius: 30px;
+  box-shadow: 2px 2px 3px black;
 }
 
 .city {
