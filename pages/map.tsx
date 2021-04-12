@@ -98,9 +98,9 @@ export default function map({
     }
   }
 
-  const campsiteMarker = campsites.map((camp, index) => (
+  const campsiteMarker = campsites.map((camp) => (
     <Marker
-      key={index}
+      key={camp.name}
       className={styles.marker}
       longitude={camp.lon}
       latitude={camp.lat}
