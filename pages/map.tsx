@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import styles from "../styles/Map.module.css";
-import { Campsite, getCampSites } from "../utils/api";
+import { Campsite, getCampSites, getCampSitesAround } from "../utils/api";
 import CampMarkerIcon from "../components/icons/CampMarkerIcon";
 import PopupSelect from "../components/popupselect/PopupSelect";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -59,7 +59,7 @@ export default function map({
   }, []);
 
   useEffect(() => {
-    getCampSites().then(setCampsites);
+    getCampSitesAround(longitude, latitude, 250000).then(setCampsites);
   }, []);
 
   if (!campsites) {
