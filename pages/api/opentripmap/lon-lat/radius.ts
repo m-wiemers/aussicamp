@@ -17,7 +17,7 @@ export default async function getCampsitesAround(
   const camps = result
     .filter(
       (camp, index, self) =>
-        index === self.findIndex((t) => t.name === camp.name)
+        index === self.findIndex((c) => c.name === camp.name)
     )
     .filter((campsite: Record<string, string>) => campsite.name !== "")
     .map((campsite) => {
