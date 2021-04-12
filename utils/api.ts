@@ -41,3 +41,13 @@ export async function getCampSite(campsite: string): Promise<Campsite> {
 export async function getCampSites(): Promise<Campsite[]> {
   return await fetchURL<Campsite[]>("/api/opentripmap/campsites");
 }
+
+export async function getCampSitesAround(
+  lon: number,
+  lat: number,
+  radius: number
+): Promise<Campsite[]> {
+  return await fetchURL<Campsite[]>(
+    `/api/opentripmap/lon-lat/radius?lon=${lon}&lat=${lat}&radius=${radius}`
+  );
+}
