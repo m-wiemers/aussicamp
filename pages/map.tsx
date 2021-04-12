@@ -88,12 +88,13 @@ export default function map({
     if (
       storedDays[indexFromSelectedDay].campSites.includes(selectedCampSite.name)
     ) {
-      alert("Campsite is already at your plan");
+      alert("Campsite is already set this day");
     } else {
       storedDays[indexFromSelectedDay].campSites.push(selectedCampSite.name);
       setStoredDays(storedDays);
       setAdd("added!");
       setTimeout(() => setAdd("Add Campsite"), 1500);
+      setIndexFromSelectDay(0);
     }
   }
 
