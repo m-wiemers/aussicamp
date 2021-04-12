@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import styles from "../styles/Map.module.css";
-import { Campsite, getCampSites, getCampSitesAround } from "../utils/api";
+import { Campsite, getCampSitesAround } from "../utils/api";
 import CampMarkerIcon from "../components/icons/CampMarkerIcon";
 import PopupSelect from "../components/popupselect/PopupSelect";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -66,6 +66,14 @@ export default function map({
     return <div>Loading...</div>;
   }
 
+  async function handleCampUpdate(viewport) {
+    await getCampSitesAround(
+      viewport.longitude,
+      viewport.latitude,
+      250000
+    ).then(setCampsites);
+  }
+
   function handleIconClick(camp) {
     setSelectedCampSite(camp);
   }
@@ -110,6 +118,12 @@ export default function map({
         mapStyle={mapStyle}
         onViewportChange={(viewport) => setViewport(viewport)}
       >
+        <button
+          className={styles.loadBtn}
+          onClick={() => handleCampUpdate(viewport)}
+        >
+          load campsites here
+        </button>
         <div>{campsiteMarker}</div>
         {selectedCampSite && (
           <Popup
