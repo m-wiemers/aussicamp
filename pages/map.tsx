@@ -67,11 +67,18 @@ export default function map({
   }
 
   async function handleCampUpdate(viewport) {
-    await getCampSitesAround(
+    const newCamps = await getCampSitesAround(
       viewport.longitude,
       viewport.latitude,
       250000
-    ).then(setCampsites);
+    );
+    const allCamps = campsites
+      .concat(newCamps)
+      .filter(
+        (camp, index, self) =>
+          index === self.findIndex((c) => c.name === camp.name)
+      );
+    setCampsites(allCamps);
   }
 
   function handleIconClick(camp) {
