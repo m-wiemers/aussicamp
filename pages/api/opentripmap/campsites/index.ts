@@ -17,14 +17,16 @@ export default async function getCampSites(
     return response.json();
   });
 
-  const camps = results.map((campsite) => {
-    return {
-      name: campsite.name,
-      lon: campsite.point.lon,
-      lat: campsite.point.lat,
-      rate: campsite.rate,
-    };
-  });
+  const camps = results
+    .filter((campsite) => campsite.name !== "")
+    .map((campsite) => {
+      return {
+        name: campsite.name,
+        lon: campsite.point.lon,
+        lat: campsite.point.lat,
+        rate: campsite.rate,
+      };
+    });
 
   res.status(200).json(camps);
 }
