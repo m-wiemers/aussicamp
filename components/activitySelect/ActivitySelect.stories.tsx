@@ -14,4 +14,5 @@ const Template: Story<ActivitySelectProps> = (args) => (
 export const Activities = Template.bind({});
 Activities.args = {
   activities: ["Sport", "Nature", "Historical", "Culture", "Amusements"],
+  defaultValue: "Choose Activity",
 };

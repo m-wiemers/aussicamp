@@ -23,7 +23,7 @@ function ActivitySelect({
     <>
       <select className={styles.select} onChange={onSelect} value={selected}>
         <option selected value={defaultValue}>
-          Choose Activity
+          {defaultValue}
         </option>
         {activitySelect}
       </select>
