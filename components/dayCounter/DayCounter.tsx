@@ -9,7 +9,7 @@ export type DayCounterProps = {
 function DayCounter({ label, days, secondLabel }: DayCounterProps) {
   return (
     <div className={styles.container}>
-      <p>{`${label} ${days} ${secondLabel}`}</p>
+      <p className={styles.font}>{`${label} ${days} ${secondLabel}`}</p>
     </div>
   );
 }
