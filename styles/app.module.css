@@ -19,6 +19,7 @@
 }
 
 .content {
+  z-index: 0;
   grid-area: content;
   overflow: auto;
   height: 100%;

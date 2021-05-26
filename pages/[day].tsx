@@ -15,7 +15,7 @@ export default function Days() {
   useEffect(() => {
     if (!days) {
       alert("No days at your plan");
-      router.push("/map");
+      router.push("/settings");
     } else {
       setDays(days);
     }

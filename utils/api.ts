@@ -21,6 +21,13 @@ export type Campsite = {
   rate: number;
 };
 
+export type Activity = {
+  name: string;
+  lon: number;
+  lat: number;
+  rate: number;
+};
+
 async function fetchURL<T>(url: string): Promise<T> {
   const response = await fetch(url);
   return await response.json();
@@ -49,5 +56,16 @@ export async function getCampSitesAround(
 ): Promise<Campsite[]> {
   return await fetchURL<Campsite[]>(
     `/api/opentripmap/lon-lat/radius?lon=${lon}&lat=${lat}&radius=${radius}`
+  );
+}
+
+export async function getActivities(
+  lon: number,
+  lat: number,
+  radius: number,
+  kind: string
+): Promise<Activity[]> {
+  return await fetchURL<Activity[]>(
+    `/api/opentripmap/activities?lon=${lon}&lat=${lat}&radius=${radius}&kind=${kind}`
   );
 }
