@@ -14,9 +14,9 @@ function ActivitySelect({
   selected,
   defaultValue,
 }: ActivitySelectProps) {
-  const activitySelect = activities.map((avtivity) => (
-    <option defaultValue={selected} key={avtivity}>
-      {avtivity}
+  const activitySelect = activities.map((activity) => (
+    <option defaultValue={selected} key={activity}>
+      {activity}
     </option>
   ));
   return (
